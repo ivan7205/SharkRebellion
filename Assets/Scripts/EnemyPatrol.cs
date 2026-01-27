@@ -73,7 +73,7 @@ public class EnemyPatrol : MonoBehaviour
 
 	private void LateUpdate()
 	{
-		_animator.SetBool("Idle", _rigidbody.velocity == Vector2.zero);
+		_animator.SetBool("Turtlechoke", _rigidbody.velocity == Vector2.zero);
 	}
 
 	private void OnTriggerStay2D(Collider2D collision)

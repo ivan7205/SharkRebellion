@@ -66,19 +66,11 @@ MonoBehaviour:
     the 2D Renderer in Universal RP.
   preview: {fileID: -3604256930052969394}
   dependencies:
-  - dependency: {fileID: -8653719598885068355, guid: 516dcebfea582fb4f841243ddfca6066, type: 3}
+  - dependency: {fileID: 2800000, guid: 9cb3b183f77c0224dbb8fd179568c2ea, type: 3}
     instantiationMode: 0
-  - dependency: {fileID: 7400000, guid: 503c6111373687848ade52150b7175ec, type: 2}
+  - dependency: {fileID: 2800000, guid: 679afd91b5514fc4e9b9eab50c66c210, type: 3}
     instantiationMode: 0
-  - dependency: {fileID: 7400000, guid: a47b1ddeab0abd04d81b03fb2d18982a, type: 2}
-    instantiationMode: 0
-  - dependency: {fileID: 7400000, guid: 4b4480f787fe2d149b7de44c026ca4a6, type: 2}
-    instantiationMode: 0
-  - dependency: {fileID: 7400000, guid: 361a6d2e20075064c88b33cec4ff60ff, type: 2}
-    instantiationMode: 0
-  - dependency: {fileID: 9100000, guid: 12d64855f5065a946ada165c4a3daed4, type: 2}
-    instantiationMode: 0
-  - dependency: {fileID: 7400000, guid: ae2c334aa14ee1a44af3f37a52feaf09, type: 2}
+  - dependency: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     instantiationMode: 0
   templatePipeline: {fileID: 0}
   badge: {fileID: 0}

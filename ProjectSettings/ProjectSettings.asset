@@ -4,7 +4,11 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
+<<<<<<< Updated upstream
   productGUID: 5716ca8b4d7f5b740a6b32d0ebed3a01
+=======
+  productGUID: 8c1b295f6dee07449b2c8ecf3ff2a5b2
+>>>>>>> Stashed changes
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -168,7 +172,11 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.Company.ProductName
+<<<<<<< Updated upstream
     Standalone: com.Unity-Technologies.Unity-Playground
+=======
+    Standalone: com.DefaultCompany.SharkRebellion
+>>>>>>> Stashed changes
     Tizen: com.Company.ProductName
     iPhone: com.Company.ProductName
     tvOS: com.Company.ProductName
@@ -914,7 +922,6 @@ PlayerSettings:
   cloudProjectId: 75253229-da53-4fb0-8bdf-375c506d24ff
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: SharkRebellion 2025-12-16_10-32-12
   organizationId: ivangr72
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 1

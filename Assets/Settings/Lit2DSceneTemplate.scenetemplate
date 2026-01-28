@@ -66,19 +66,30 @@ MonoBehaviour:
     the 2D Renderer in Universal RP.
   preview: {fileID: -3604256930052969394}
   dependencies:
-  - dependency: {fileID: -8653719598885068355, guid: 516dcebfea582fb4f841243ddfca6066, type: 3}
+  - dependency: {fileID: -8653719598885068355, guid: 03ea1096a38ce164cb22d01947edf6f8,
+      type: 3}
     instantiationMode: 0
-  - dependency: {fileID: 7400000, guid: 503c6111373687848ade52150b7175ec, type: 2}
+  - dependency: {fileID: 7400000, guid: fd2f73fa8fb01f6478320e4d7481be35, type: 2}
     instantiationMode: 0
-  - dependency: {fileID: 7400000, guid: a47b1ddeab0abd04d81b03fb2d18982a, type: 2}
+  - dependency: {fileID: 7400000, guid: e6ead67e740276048a6b1336416d7ad2, type: 2}
     instantiationMode: 0
-  - dependency: {fileID: 7400000, guid: 4b4480f787fe2d149b7de44c026ca4a6, type: 2}
+  - dependency: {fileID: 7400000, guid: 2ad6b58ce69ac104ebe5438bf8873ae1, type: 2}
     instantiationMode: 0
-  - dependency: {fileID: 7400000, guid: 361a6d2e20075064c88b33cec4ff60ff, type: 2}
+  - dependency: {fileID: 7400000, guid: cd617d9e914493f4c90c57a47e9f476e, type: 2}
     instantiationMode: 0
-  - dependency: {fileID: 9100000, guid: 12d64855f5065a946ada165c4a3daed4, type: 2}
+  - dependency: {fileID: 7400000, guid: 600fdba8a494a304398f0b0adcd69647, type: 2}
     instantiationMode: 0
-  - dependency: {fileID: 7400000, guid: ae2c334aa14ee1a44af3f37a52feaf09, type: 2}
+  - dependency: {fileID: 7400000, guid: c3358c317ecc29f46be7d452677fd719, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 9100000, guid: 7c827adc2a64eb2458afc0a133777092, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 7400000, guid: eb34135e81592f940a9f791d3337e33e, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 7400000, guid: 5d40ed08661139c429cb868f2cc5a8cf, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 7400000, guid: dff8092aacb73f64eb9f4f47673bb3d4, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 7400000, guid: 0da16e3063ae90449a19a6a47e9cc561, type: 2}
     instantiationMode: 0
   templatePipeline: {fileID: 0}
   badge: {fileID: 0}

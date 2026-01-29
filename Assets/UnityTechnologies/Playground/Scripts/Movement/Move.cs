@@ -62,6 +62,10 @@ public class Move : Physics2DObject
 			}
 			Utils.SetAxisTowards(lookAxis, transform, cachedDirection);
 		}
+
+		Vector3 move = new Vector3(moveHorizontal * speed, moveVertical * speed);
+
+		transform.position += move * Time.deltaTime;
 	}
 
 

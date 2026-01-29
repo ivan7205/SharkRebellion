@@ -7,10 +7,11 @@ public class HealthHeartsController : MonoBehaviour
 {
     public int health;
     public int maxHealth;
-
     public Sprite emptyHeart;
     public Sprite fullHeart;
     public Image[] hearts;
+
+    public JeffHealth playerHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,9 @@ public class HealthHeartsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        health = playerHealth.health;
+        maxHealth = playerHealth.maxHealth;
+
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < health)

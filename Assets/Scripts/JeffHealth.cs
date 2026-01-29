@@ -5,7 +5,12 @@ using UnityEngine;
 public class JeffHealth : MonoBehaviour
 {
     public int health;
-    public int maxHealth = 10;
+    public int maxHealth = 6;
+
+    public SpriteRenderer playerSr;
+    public Move playerMovement;
+    public Animator animator;
+    public Jump playerJump;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +23,10 @@ public class JeffHealth : MonoBehaviour
         health -= amount;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            playerSr.enabled = false;
+            playerMovement.enabled = false;
+            animator.SetTrigger("Die");
+            playerJump.enabled = false;
         }
     }
 }

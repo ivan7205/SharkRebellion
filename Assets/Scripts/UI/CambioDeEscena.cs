@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,11 +15,12 @@ public class CambioDeEscena : MonoBehaviour
     }
     public void ChangeLevel(string sceneName)
     {
+    
         SceneManager.LoadScene(sceneName); //Carga una escena
     }
     public void End()
     {
-        Debug.Log("Se termino");
+     
         Application.Quit();
     }
 }

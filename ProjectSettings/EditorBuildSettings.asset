@@ -6,11 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Inicio.unity
+    guid: a5f251719ca6af14e80f496a88a1b21d
+  - enabled: 1
+    path: Assets/Scenes/OpcioneInicio.unity
+    guid: a118f4ad07aa0a84a933372e90236400
+  - enabled: 1
     path: Assets/Scenes/MapaGris.unity
     guid: 044589faa946a6a4fbab3813665f1779
   - enabled: 1
     path: Assets/Scenes/Animatica.unity
-    guid: 138f78c19b091fe42b3a695436a9e950
+    guid: 742334dbdca901548933084ca82408d1
+  - enabled: 1
+    path: Assets/Scenes/SharkRebellion.unity
+    guid: 25a11f9746d91eb41a27a72a3db6765a
   - enabled: 0
     path: Assets/UnityTechnologies/Playground/Examples/Maze/MazeLevel0.unity
     guid: 029e597475c3944a5b42678232c2822b

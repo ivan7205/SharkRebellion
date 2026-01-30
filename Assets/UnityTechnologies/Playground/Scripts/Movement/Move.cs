@@ -21,13 +21,20 @@ public class Move : Physics2DObject
 	private Vector2 movement, cachedDirection;
 	private float moveHorizontal;
 	private float moveVertical;
+    public Animator animator;
 
+	void Start ()
+	{
+		animator = GetComponent<Animator>();
+	}
 
-	// Update gets called every frame
-	void Update ()
-	{	
-		// Moving with the arrow keys
-		if(typeOfControl == Enums.KeyGroups.ArrowKeys)
+    // Update gets called every frame
+    void Update ()
+	{
+        animator.SetBool("Idle", movement == Vector2.zero);
+
+        // Moving with the arrow keys
+        if (typeOfControl == Enums.KeyGroups.ArrowKeys)
 		{
 			moveHorizontal = Input.GetAxis("Horizontal");
 			moveVertical = Input.GetAxis("Vertical");

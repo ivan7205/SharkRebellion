@@ -21,16 +21,31 @@ public class Jump : Physics2DObject
 	public bool checkGround = true;
 
 	private bool canJump = true;
+	public Animator animator;
+	public Vector2 movement;
 
-	// Read the input from the player
-	void Update()
+    void Start()
+    {
+        if (animator == null)
+            animator = GetComponent<Animator>();
+
+		animator.ResetTrigger("Jump");
+    }
+
+    // Read the input from the player
+    void Update()
 	{
+
 		if(canJump
 			&& Input.GetKeyDown(key))
 		{
 			// Apply an instantaneous upwards force
 			rigidbody2D.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
-			canJump = !checkGround;
+
+            animator.SetTrigger("Jump");
+            animator.SetBool("isGrounded", true);
+
+            canJump = !checkGround;
 		}
 	}
 
@@ -40,6 +55,11 @@ public class Jump : Physics2DObject
 			&& collisionData.gameObject.CompareTag(groundTag))
 		{
 			canJump = true;
-		}
+
+           
+			animator.SetBool("isGrounded", true);
+        }
+
 	}
+
 }

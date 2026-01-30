@@ -28,15 +28,19 @@ public class ObjectShooter : MonoBehaviour
 	// Will be set to 0 or 1 depending on how the GameObject is tagged
 	private int playerNumber;
 
+    public Animator animator;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
 	{
 		timeOfLastSpawn = -creationRate;
 
 		// Set the player number based on the GameObject tag
 		playerNumber = (gameObject.CompareTag("Player")) ? 0 : 1;
-	}
+
+        animator = GetComponent<Animator>();
+        Debug.Log(animator);
+    }
 
 
 	// Update is called once per frame
@@ -70,7 +74,13 @@ public class ObjectShooter : MonoBehaviour
 
 
 			timeOfLastSpawn = Time.time;
-		}
+
+            if (Input.GetKeyDown(KeyCode.J)) // clic izquierdo
+            {
+                Debug.Log("J PULSADA");
+                animator.SetTrigger("Attack");
+            }
+        }
 	}
 
 	void OnDrawGizmosSelected()

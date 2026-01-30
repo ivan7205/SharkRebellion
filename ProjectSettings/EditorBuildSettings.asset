@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/OpcioneInicio.unity
     guid: a118f4ad07aa0a84a933372e90236400
   - enabled: 1
+    path: Assets/Scenes/Ajustes.unity
+    guid: d625883a1941f2f4e8fdbd71e7e899ba
+  - enabled: 1
     path: Assets/Scenes/MapaGris.unity
     guid: 044589faa946a6a4fbab3813665f1779
   - enabled: 1

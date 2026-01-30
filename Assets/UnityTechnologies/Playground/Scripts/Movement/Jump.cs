@@ -28,6 +28,8 @@ public class Jump : Physics2DObject
     {
         if (animator == null)
             animator = GetComponent<Animator>();
+
+		animator.ResetTrigger("Jump");
     }
 
     // Read the input from the player
@@ -54,7 +56,10 @@ public class Jump : Physics2DObject
 		{
 			canJump = true;
 
-            animator.SetBool("isGrounded", true);
+           
+			animator.SetBool("isGrounded", true);
         }
+
 	}
+
 }

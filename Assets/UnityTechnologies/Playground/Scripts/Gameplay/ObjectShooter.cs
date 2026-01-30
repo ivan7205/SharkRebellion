@@ -39,6 +39,7 @@ public class ObjectShooter : MonoBehaviour
 		playerNumber = (gameObject.CompareTag("Player")) ? 0 : 1;
 
         animator = GetComponent<Animator>();
+        Debug.Log(animator);
     }
 
 
@@ -76,6 +77,7 @@ public class ObjectShooter : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.J)) // clic izquierdo
             {
+                Debug.Log("J PULSADA");
                 animator.SetTrigger("Attack");
             }
         }

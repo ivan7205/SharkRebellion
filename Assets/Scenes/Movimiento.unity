@@ -1152,14 +1152,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2505272051892298469, guid: fd26886030bec9e4eaf1948a10f94dbc,
         type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 1326578105}
-    - targetCorrespondingSourceObject: {fileID: 2505272051892298469, guid: fd26886030bec9e4eaf1948a10f94dbc,
-        type: 3}
-      insertIndex: 4
-      addedObject: {fileID: 1326578094}
-    - targetCorrespondingSourceObject: {fileID: 2505272051892298469, guid: fd26886030bec9e4eaf1948a10f94dbc,
-        type: 3}
       insertIndex: -1
       addedObject: {fileID: 1326578095}
     - targetCorrespondingSourceObject: {fileID: 2505272051892298469, guid: fd26886030bec9e4eaf1948a10f94dbc,
@@ -1343,25 +1335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d926fec57fb4c411a912d607e2822370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1326578094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326578086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc51b070fa9284f41beaf009c194f0bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabToSpawn: {fileID: 6713198958278692518, guid: 52f14d6daa329114cb3a92fd4c04719d,
-    type: 3}
-  keyToPress: 106
-  creationRate: 0.5
-  shootSpeed: 30
-  shootDirection: {x: 1, y: 1}
-  relativeToRotation: 1
 --- !u!95 &1326578095
 Animator:
   serializedVersion: 5
@@ -1453,26 +1426,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1100173142}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1326578105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326578086}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c83d75e3bf45a240883c04dc58ac6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: 119
-  jumpForce: 2.5
-  groundCheck: {fileID: 635497150}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  groundCheckRadius: 0.2
-  animator: {fileID: 1326578095}
 --- !u!1 &1438077220
 GameObject:
   m_ObjectHideFlags: 0

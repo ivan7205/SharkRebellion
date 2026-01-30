@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8b3e67eeb07f6bc4e86095706937db43, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d1db6638ad5ce684db0fec4e10d453e9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0350a37d9ce5e946a506d1907974a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonido: {fileID: 21300000, guid: 8b3e67eeb07f6bc4e86095706937db43, type: 3}
-  noSonido: {fileID: 21300000, guid: 2095e3f9a4adece4689e73fd42c5d42c, type: 3}
+  sonido: {fileID: 21300000, guid: d1db6638ad5ce684db0fec4e10d453e9, type: 3}
+  noSonido: {fileID: 21300000, guid: ca7ec5d4f9418c8499464f3603445d3a, type: 3}
   handle: {fileID: 4840333928269098161}
   mySlider: {fileID: 6054765329265704832}
 --- !u!1 &1255825179812649555
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 4853786354673506411}
   - component: {fileID: 6054765329265704832}
   m_Layer: 5
-  m_Name: SliderControlAudio
+  m_Name: VolumenMusica
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

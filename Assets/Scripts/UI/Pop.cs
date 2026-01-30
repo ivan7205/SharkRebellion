@@ -2,43 +2,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Pop : MonoBehaviour
 {
-    public float popScale = 1.2f;  // cuánto se agranda
-    public float speed = 10f;      // velocidad de la animación
+    public float popScale = 1.3f;   // Cuánto se agranda el botón
+    public float duration = 0.1f;   // Duración de la animación
 
-    private Vector3 originalScale;
-
-    void Awake()
+    void Start()
     {
-        originalScale = transform.localScale;
+        // Busca todos los botones en el Canvas
+        Button[] buttons = GetComponentsInChildren<Button>();
+
+        foreach (Button btn in buttons)
+        {
+            AddPopEffect(btn);
+        }
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    void AddPopEffect(Button btn)
     {
-        StopAllCoroutines();
-        StartCoroutine(ScaleTo(transform, originalScale * popScale, 0.1f));
+        EventTrigger trigger = btn.gameObject.GetComponent<EventTrigger>();
+        if (trigger == null)
+            trigger = btn.gameObject.AddComponent<EventTrigger>();
+
+        // OnPointerDown
+        EventTrigger.Entry entryDown = new EventTrigger.Entry();
+        entryDown.eventID = EventTriggerType.PointerDown;
+        entryDown.callback.AddListener((data) => { StartCoroutine(PopCorrutina(btn.transform, popScale)); });
+        trigger.triggers.Add(entryDown);
+
+        // OnPointerUp
+        EventTrigger.Entry entryUp = new EventTrigger.Entry();
+        entryUp.eventID = EventTriggerType.PointerUp;
+        entryUp.callback.AddListener((data) => { StartCoroutine(PopCorrutina(btn.transform, 1f)); });
+        trigger.triggers.Add(entryUp);
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    IEnumerator PopCorrutina(Transform target, float targetScale)
     {
-        StopAllCoroutines();
-        StartCoroutine(ScaleTo(transform, originalScale, 0.1f));
-    }
-
-    System.Collections.IEnumerator ScaleTo(Transform target, Vector3 targetScale, float duration)
-    {
-        Vector3 startScale = target.localScale;
+        Vector3 originalScale = target.localScale;
+        Vector3 endScale = Vector3.one * targetScale;
         float t = 0f;
 
         while (t < duration)
         {
-            t += Time.unscaledDeltaTime; // unscaled para que no dependa del timeScale
-            target.localScale = Vector3.Lerp(startScale, targetScale, t / duration);
+            t += Time.unscaledDeltaTime;
+            target.localScale = Vector3.Lerp(originalScale, endScale, t / duration);
             yield return null;
         }
 
-        target.localScale = targetScale;
+        target.localScale = endScale;
     }
 }

@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3864499, g: 0.1522784, b: 0.6392157, a: 1}
+  m_Color: {r: 0.36418653, g: 0.5336418, b: 0.8301887, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d1db6638ad5ce684db0fec4e10d453e9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b3e67eeb07f6bc4e86095706937db43, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0350a37d9ce5e946a506d1907974a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonido: {fileID: 21300000, guid: d1db6638ad5ce684db0fec4e10d453e9, type: 3}
-  noSonido: {fileID: 21300000, guid: ca7ec5d4f9418c8499464f3603445d3a, type: 3}
+  sonido: {fileID: 21300000, guid: 8b3e67eeb07f6bc4e86095706937db43, type: 3}
+  noSonido: {fileID: 21300000, guid: 2095e3f9a4adece4689e73fd42c5d42c, type: 3}
   handle: {fileID: 4840333928269098161}
   mySlider: {fileID: 6054765329265704832}
 --- !u!1 &1255825179812649555
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 4853786354673506411}
   - component: {fileID: 6054765329265704832}
   m_Layer: 5
-  m_Name: VolumenMusica
+  m_Name: VolumenSonido
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,8 +265,8 @@ RectTransform:
   m_GameObject: {fileID: 6323478415718995126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8995579533425760095}
   - {fileID: 6710561623011814039}
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.28622285, g: 0.5376149, b: 0.9056604, a: 1}
+  m_Color: {r: 0.7084372, g: 0.72718346, b: 0.754717, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -451,7 +451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 22.49, y: -43.32}
+  m_AnchoredPosition: {x: 2, y: 5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1159330912781674701
@@ -482,17 +482,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Audio level
+  m_text: Sonido
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 39053323e31873744816425bf5cc21e7, type: 2}
+  m_sharedMaterial: {fileID: 2148488517344204923, guid: 39053323e31873744816425bf5cc21e7,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
@@ -545,7 +546,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 22.077755}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

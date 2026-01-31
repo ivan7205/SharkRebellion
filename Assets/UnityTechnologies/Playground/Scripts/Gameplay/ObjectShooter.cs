@@ -1,89 +1,90 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 [AddComponentMenu("Playground/Gameplay/Object Shooter")]
 public class ObjectShooter : MonoBehaviour
 {
-	[Header("Object creation")]
-	
-	public GameObject prefabToSpawn;
+    [Header("Object creation")]
 
-	// The key to press to create the objects/projectiles
-	public KeyCode keyToPress = KeyCode.Space;
+    public GameObject prefabToSpawn;
 
-	[Header("Other options")]
+    // The key to press to create the objects/projectiles
+    public KeyCode keyToPress = KeyCode.Space;
 
-	// The rate of creation, as long as the key is pressed
-	public float creationRate = .5f;
+    [Header("Other options")]
 
-	// The speed at which the object are shot along the Y axis
-	public float shootSpeed = 5f;
+    // The rate of creation, as long as the key is pressed
+    public float creationRate = .5f;
 
-	public Vector2 shootDirection = new Vector2(1f, 1f);
+    // The speed at which the object are shot along the Y axis
+    public float shootSpeed = 5f;
 
-	public bool relativeToRotation = true;
+    public Vector2 shootDirection = new Vector2(1f, 1f);
 
-	private float timeOfLastSpawn;
+    public bool relativeToRotation = true;
 
-	// Will be set to 0 or 1 depending on how the GameObject is tagged
-	private int playerNumber;
+    private float timeOfLastSpawn;
+
+    // Will be set to 0 or 1 depending on how the GameObject is tagged
+    private int playerNumber;
 
     public Animator animator;
 
 
     // Use this for initialization
-    void Start ()
-	{
-		timeOfLastSpawn = -creationRate;
+    void Start()
+    {
+        timeOfLastSpawn = -creationRate;
 
-		// Set the player number based on the GameObject tag
-		playerNumber = (gameObject.CompareTag("Player")) ? 0 : 1;
+        // Set the player number based on the GameObject tag
+        playerNumber = (gameObject.CompareTag("Player")) ? 0 : 1;
 
         animator = GetComponent<Animator>();
         Debug.Log(animator);
     }
 
 
-	// Update is called once per frame
-	void Update ()
-	{
-		if(Input.GetKey(keyToPress)
-		   && Time.time >= timeOfLastSpawn + creationRate)
-		{
-			Vector2 actualBulletDirection = (relativeToRotation) ? (Vector2)(Quaternion.Euler(0, 0, transform.eulerAngles.z) * shootDirection) : shootDirection;
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKey(keyToPress)
+           && Time.time >= timeOfLastSpawn + creationRate)
+        {
+            Vector2 actualBulletDirection = (relativeToRotation) ? (Vector2)(Quaternion.Euler(0, 0, transform.eulerAngles.z) * shootDirection) : shootDirection;
 
-			GameObject newObject = Instantiate<GameObject>(prefabToSpawn);
-			newObject.transform.position = this.transform.position;
-			newObject.transform.eulerAngles = new Vector3(0f, 0f, Utils.Angle(actualBulletDirection));
-			newObject.tag = "Bullet";
+            GameObject newObject = Instantiate<GameObject>(prefabToSpawn);
+            newObject.transform.position = this.transform.position;
+            newObject.transform.eulerAngles = new Vector3(0f, 0f, Utils.Angle(actualBulletDirection));
+            newObject.tag = "Bullet";
 
-			// push the created objects, but only if they have a Rigidbody2D
-			Rigidbody2D rigidbody2D = newObject.GetComponent<Rigidbody2D>();
-			if(rigidbody2D != null)
-			{
-				rigidbody2D.AddForce(actualBulletDirection * shootSpeed, ForceMode2D.Impulse);
-			}
+            // push the created objects, but only if they have a Rigidbody2D
+            Rigidbody2D rigidbody2D = newObject.GetComponent<Rigidbody2D>();
+            if (rigidbody2D != null)
+            {
+                rigidbody2D.AddForce(actualBulletDirection * shootSpeed, ForceMode2D.Impulse);
+            }
 
-			// add a Bullet component if the prefab doesn't already have one, and assign the player ID
-			BulletAttribute b = newObject.GetComponent<BulletAttribute>();
-			if(b == null)
-			{
-				b = newObject.AddComponent<BulletAttribute>();
-			}
-			b.playerId = playerNumber;
+            // add a Bullet component if the prefab doesn't already have one, and assign the player ID
+            BulletAttribute b = newObject.GetComponent<BulletAttribute>();
+            if (b == null)
+            {
+                b = newObject.AddComponent<BulletAttribute>();
+            }
+            b.playerId = playerNumber;
 
 
 
-			timeOfLastSpawn = Time.time;
+            timeOfLastSpawn = Time.time;
         }
-	}
+    }
 
-	void OnDrawGizmosSelected()
-	{
-		if(this.enabled)
-		{
-			float extraAngle = (relativeToRotation) ? transform.rotation.eulerAngles.z : 0f;
-			Utils.DrawShootArrowGizmo(transform.position, shootDirection, extraAngle, 1f);
-		}
-	}
+    void OnDrawGizmosSelected()
+    {
+        if (this.enabled)
+        {
+            float extraAngle = (relativeToRotation) ? transform.rotation.eulerAngles.z : 0f;
+            Utils.DrawShootArrowGizmo(transform.position, shootDirection, extraAngle, 1f);
+        }
+    }
 }
+
+

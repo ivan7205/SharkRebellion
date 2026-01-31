@@ -24,6 +24,25 @@ public class MusicManager : MonoBehaviour
         float savedVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
         audioSource.volume = savedVolume;
     }
+
+    public void PlayMusic()
+    {
+        // Aplica el volumen actual guardado
+        float savedVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        audioSource.volume = savedVolume;
+
+        // Reproduce la música si no está sonando
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+    }
+
+    public void StopMusic()
+    {
+        if (audioSource.isPlaying)
+            audioSource.Stop();
+    }
     // Método para actualizar volumen
     public void SetVolume(float volume)
     {

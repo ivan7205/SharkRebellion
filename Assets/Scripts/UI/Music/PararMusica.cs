@@ -8,7 +8,7 @@ public class PararMusica : MonoBehaviour
     {
         if (MusicManager.instance != null)
         {
-            MusicManager.instance.GetComponent<AudioSource>().Stop();
+            MusicManager.instance.StopMusic();
         }
     }
 }

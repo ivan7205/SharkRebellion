@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SharkRebellion.unity
     guid: 25a11f9746d91eb41a27a72a3db6765a
+  - enabled: 1
+    path: Assets/Scenes/EscenaPatata.unity
+    guid: 76284c0a50720a84cbba97b7c5bc9f9a
   - enabled: 0
     path: Assets/UnityTechnologies/Playground/Examples/Maze/MazeLevel0.unity
     guid: 029e597475c3944a5b42678232c2822b

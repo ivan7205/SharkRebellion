@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5189764134913722134}
   - component: {fileID: 5405738799114534156}
   - component: {fileID: -6985096557713595956}
-  - component: {fileID: 375571806409856997}
+  - component: {fileID: 8835615695448391777}
   m_Layer: 0
   m_Name: PowerUp
   m_TagString: Untagged
@@ -160,7 +160,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &375571806409856997
+--- !u!114 &8835615695448391777
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 166127471828208809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61265247316316442bab47b76ded9b2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 385fa8c03b1a8084081ecfccb207b1dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5854956991328398077

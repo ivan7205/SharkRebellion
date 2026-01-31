@@ -637,7 +637,7 @@ MonoBehaviour:
   shootSpeed: 30
   shootDirection: {x: 1, y: 6}
   relativeToRotation: 1
-  animator: {fileID: 0}
+  animator: {fileID: 924034228}
 --- !u!61 &924034221
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -809,7 +809,7 @@ MonoBehaviour:
   shootSpeed: 40
   shootDirection: {x: 1, y: 30}
   relativeToRotation: 1
-  animator: {fileID: 0}
+  animator: {fileID: 924034228}
 --- !u!95 &924034228
 Animator:
   serializedVersion: 5

@@ -461,16 +461,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 595336108}
-        m_TargetAssemblyTypeName: CambioCanva, Assembly-CSharp
-        m_MethodName: IrAJuego
-        m_Mode: 1
+      - m_Target: {fileID: 595336111}
+        m_TargetAssemblyTypeName: CambioDeEscena, Assembly-CSharp
+        m_MethodName: ChangeLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MapaGris
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &260902733
@@ -612,10 +612,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 595336109}
-  - component: {fileID: 595336108}
-  - component: {fileID: 595336110}
-  - component: {fileID: 595336112}
   - component: {fileID: 595336111}
+  - component: {fileID: 595336113}
+  - component: {fileID: 595336112}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -623,20 +622,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &595336108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595336107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95776a1321dbba9409430b7642d0dd98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasMenu: {fileID: 623675160}
-  canvasJuego: {fileID: 42551641}
 --- !u!4 &595336109
 Transform:
   m_ObjectHideFlags: 0
@@ -652,20 +637,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &595336110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595336107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95776a1321dbba9409430b7642d0dd98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasMenu: {fileID: 0}
-  canvasJuego: {fileID: 623675160}
 --- !u!114 &595336111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,11 +658,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 595336107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95776a1321dbba9409430b7642d0dd98, type: 3}
+  m_Script: {fileID: 11500000, guid: 68d0feb40df483243bf8071d15a3da52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasMenu: {fileID: 42551641}
-  canvasJuego: {fileID: 855877892}
+  canvasParaMostrar: {fileID: 855877892}
+--- !u!114 &595336113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595336107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d0feb40df483243bf8071d15a3da52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasParaMostrar: {fileID: 42551641}
 --- !u!1 &603791132
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,8 +775,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 595336112}
-        m_TargetAssemblyTypeName: CambioCanva, Assembly-CSharp
-        m_MethodName: IrAJuego
+        m_TargetAssemblyTypeName: CanvaSuperposicion, Assembly-CSharp
+        m_MethodName: ActivarCanvas
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1400,7 +1383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &855877893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1793,16 +1776,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 595336108}
-        m_TargetAssemblyTypeName: CambioCanva, Assembly-CSharp
-        m_MethodName: IrAJuego
-        m_Mode: 1
+      - m_Target: {fileID: 595336111}
+        m_TargetAssemblyTypeName: CambioDeEscena, Assembly-CSharp
+        m_MethodName: ChangeLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MapaGris
+          m_StringArgument: Inicio
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1097210065
@@ -2088,7 +2071,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 286, y: 0}
-  m_SizeDelta: {x: 1343, y: 1080}
+  m_SizeDelta: {x: 1353, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1239298014
 MonoBehaviour:
@@ -2185,7 +2168,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 58a2efad9fa4c5949976ae1f6ef94d12, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68091d9f208edf34ba97605f1811fd4f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2647,10 +2630,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 595336108}
-        m_TargetAssemblyTypeName: CambioCanva, Assembly-CSharp
-        m_MethodName: IrAJuego
-        m_Mode: 1
+      - m_Target: {fileID: 595336111}
+        m_TargetAssemblyTypeName: CambioDeEscena, Assembly-CSharp
+        m_MethodName: ChangeLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2796,9 +2779,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 595336108}
-        m_TargetAssemblyTypeName: CambioCanva, Assembly-CSharp
-        m_MethodName: IrAJuego
+      - m_Target: {fileID: 595336113}
+        m_TargetAssemblyTypeName: CanvaSuperposicion, Assembly-CSharp
+        m_MethodName: ActivarCanvas
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2806,6 +2789,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: MapaGris
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 595336112}
+        m_TargetAssemblyTypeName: CanvaSuperposicion, Assembly-CSharp
+        m_MethodName: DesactivarCanvas
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1807892023
@@ -2971,7 +2966,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0c6e7c61b6b564645814f3886160dfdb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89b5ddccd1481184c84fab03598d463f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

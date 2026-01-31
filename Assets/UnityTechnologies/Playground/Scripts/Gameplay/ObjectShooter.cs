@@ -74,12 +74,6 @@ public class ObjectShooter : MonoBehaviour
 
 
 			timeOfLastSpawn = Time.time;
-
-            if (Input.GetKeyDown(KeyCode.J)) // clic izquierdo
-            {
-                Debug.Log("J PULSADA");
-                animator.SetTrigger("Attack");
-            }
         }
 	}
 

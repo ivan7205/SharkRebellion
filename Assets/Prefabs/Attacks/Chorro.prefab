@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8362801196429610808}
   - component: {fileID: -2821982396223832520}
   - component: {fileID: 2545798582764053436}
+  - component: {fileID: -8740912707954723437}
   m_Layer: 0
   m_Name: Chorro
   m_TagString: Bullet
@@ -148,3 +149,16 @@ CapsuleCollider2D:
   m_Offset: {x: 0.000007856883, y: -0.09169496}
   m_Size: {x: 5.052832, y: 3.5494683}
   m_Direction: 1
+--- !u!114 &-8740912707954723437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6713198958278692518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75dd63acc8b6e52468ac7a1bfc38571a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2

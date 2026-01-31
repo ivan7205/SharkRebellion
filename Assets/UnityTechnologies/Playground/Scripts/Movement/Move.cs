@@ -33,6 +33,11 @@ public class Move : Physics2DObject
 	{
         animator.SetBool("Idle", movement == Vector2.zero);
 
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            animator.SetTrigger("Attack");
+        }
+
         // Moving with the arrow keys
         if (typeOfControl == Enums.KeyGroups.ArrowKeys)
 		{

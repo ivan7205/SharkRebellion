@@ -1078,9 +1078,11 @@ GameObject:
   - component: {fileID: 1103245207}
   - component: {fileID: 1103245209}
   - component: {fileID: 1103245210}
+  - component: {fileID: 1103245211}
+  - component: {fileID: 1103245212}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1212,6 +1214,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1103245211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103245206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e3682846326da42af40997c19122ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 0
+--- !u!114 &1103245212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103245206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209b9306712e89a41a31b18577dfcfe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1326578087 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3090733741857637236, guid: fd26886030bec9e4eaf1948a10f94dbc,

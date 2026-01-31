@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VialManager : MonoBehaviour
 {
@@ -12,11 +13,22 @@ public class VialManager : MonoBehaviour
     public int vialCount = 0;       // contador global
     public int vialsNeeded = 5;     // viales necesarios para transformarse
 
+    [Header("UI")]
+    public Slider vialSlider;  // arrastra aquí el Slider de la UI
+
     private void Start()
     {
         // Solo Jeff activo al inicio
         jeff.SetActive(true);
         venom.SetActive(false);
+
+        // Configuramos el slider
+        if (vialSlider != null)
+        {
+            vialSlider.minValue = 0;
+            vialSlider.maxValue = vialsNeeded;
+            vialSlider.value = vialCount;
+        }
     }
 
     // Este método lo llamarán los viales al ser recogidos
@@ -25,6 +37,13 @@ public class VialManager : MonoBehaviour
         vialCount++;
         Debug.Log("Viales recogidos: " + vialCount);
 
+        if (vialSlider != null)
+        {
+            vialSlider.value = vialCount;
+            Debug.Log("Slider actualizado a: " + vialSlider.value);
+        }
+
+        //Activa el Venom si alcanzamos el limite
         if (vialCount >= vialsNeeded)
         {
             ActivateVenom();

@@ -22,8 +22,13 @@ public class Move : Physics2DObject
 	private float moveHorizontal;
 	private float moveVertical;
     public Animator animator;
+	public float shootingTime = 0.5f;
+	public float aimingTime = 3f;
+	public float GetKeyDown;
 
-	void Start ()
+    bool isCharging = false;
+
+    void Start ()
 	{
 		animator = GetComponent<Animator>();
 	}
@@ -36,6 +41,18 @@ public class Move : Physics2DObject
         if (Input.GetKeyDown(KeyCode.J))
         {
             animator.SetTrigger("Attack");
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            animator.SetTrigger("ShootShort");
+        }
+
+        if (Input.GetKeyDown(KeyCode.L) && !isCharging)
+        {
+            isCharging = true;
+            animator.SetTrigger("ShootLong 0");
+            StartCoroutine("AimAndShoot");
         }
 
         // Moving with the arrow keys
@@ -88,4 +105,17 @@ public class Move : Physics2DObject
 		// Apply the force to the Rigidbody2d
 		rigidbody2D.AddForce(movement * speed * 10f);
 	}
+
+    private IEnumerator AimAndShoot()
+    {
+        isCharging = true;
+
+        yield return new WaitForSeconds(aimingTime);
+
+		animator.SetTrigger("ShootLong 0");
+
+        yield return new WaitForSeconds(shootingTime);
+
+        isCharging = false;
+    }
 }

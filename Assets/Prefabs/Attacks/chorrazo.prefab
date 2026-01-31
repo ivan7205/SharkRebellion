@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4500016059805249860}
   - component: {fileID: 1375279870948706936}
   - component: {fileID: 3050505072363221676}
+  - component: {fileID: -1994703623763179509}
   m_Layer: 0
   m_Name: chorrazo
   m_TagString: Untagged
@@ -148,3 +149,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 2
+--- !u!114 &-1994703623763179509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8420193241429715296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75dd63acc8b6e52468ac7a1bfc38571a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2

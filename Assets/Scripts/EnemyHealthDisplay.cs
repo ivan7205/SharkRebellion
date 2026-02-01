@@ -1,86 +1,90 @@
-﻿using System.Collections.Generic;
-using System.Security.Cryptography;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyHealthDisplay : MonoBehaviour
 {
-    public int health;
+    public Sprite portrait;
+    public int maxHealth = 4;
     public int currentHealth;
-    public int maxHealth;
+
+    // AÑADIDO: Referencias a la UI de este enemigo
+    public Image[] hearts;
     public Sprite emptyHeart;
     public Sprite fullHeart;
-    public Image[] hearts;
+    public float showHealthDistance = 15f;
 
-    public float maxDetectDistance = 15f;
+    private Transform player;
 
-    public EnemyHealth nearestEnemy;
-    public List<EnemyHealth> enemies = new List<EnemyHealth>();
-
-    // Start is called before the first frame update
     void Start()
     {
+        currentHealth = maxHealth;
 
+        // AÑADIDO: Encontrar al jugador
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        // AÑADIDO: Ocultar corazones al inicio
+        UpdateHealthDisplay();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        FindClosestEnemy();
-    }
-
-    public void FindClosestEnemy()
-    {
-
-        float closestDistance = Mathf.Infinity;
-        nearestEnemy = null;
-
-        foreach (EnemyHealth enemy in enemies)
+        // AÑADIDO: Verificar distancia al jugador
+        if (player != null)
         {
-            if (enemy == null) continue;
-            if (enemy.currentHealth <= 0) continue;
+            float distance = Vector3.Distance(transform.position, player.position);
 
-            float distance = (enemy.transform.position - transform.position).sqrMagnitude;
-
-            if (distance < closestDistance)
+            if (distance <= showHealthDistance)
             {
-                closestDistance = distance;
-                nearestEnemy = enemy;
+                ShowHealth();
+            }
+            else
+            {
+                HideHealth();
             }
         }
-
-        if (nearestEnemy != null && closestDistance <= maxDetectDistance * maxDetectDistance)
-            HealthBarOn();
-        else
-            HealthBarOff();
     }
 
-
-    public void HealthBarOff()
+    public void TakeDamage(int amount)
     {
-        for (int i = 0; i < hearts.Length; i++)
+        currentHealth -= amount;
+        UpdateHealthDisplay(); // AÑADIDO: Actualizar display
+
+        if (currentHealth <= 0)
         {
-            hearts[i].enabled = false;
+            Destroy(gameObject);
         }
     }
 
-    public void HealthBarOn()
+    // AÑADIDO: Mostrar corazones
+    void ShowHealth()
     {
-        maxHealth = nearestEnemy.maxHealth;
-        health = nearestEnemy.currentHealth;
+        UpdateHealthDisplay();
+    }
 
+    // AÑADIDO: Ocultar corazones
+    void HideHealth()
+    {
+        foreach (Image heart in hearts)
+        {
+            heart.enabled = false;
+        }
+    }
+
+    // AÑADIDO: Actualizar display de vida
+    void UpdateHealthDisplay()
+    {
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < maxHealth)
             {
                 hearts[i].enabled = true;
-                hearts[i].sprite = (i < health) ? fullHeart : emptyHeart;
+                hearts[i].sprite = (i < currentHealth) ? fullHeart : emptyHeart;
             }
             else
             {
-                {
-                    hearts[i].enabled = false;
-                }
+                hearts[i].enabled = false;
             }
         }
     }

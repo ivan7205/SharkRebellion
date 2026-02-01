@@ -32,9 +32,10 @@ public class EnemyHealth : MonoBehaviour
         // Verificar distancia al jugador
         if (player != null)
         {
-            float distance = Vector3.Distance(transform.position, player.position);
+            // Calcular distancia en X (horizontal)
+            float distanceX = Mathf.Abs(player.position.x - transform.position.x);
 
-            if (distance <= showHealthDistance)
+            if (distanceX <= showHealthDistance)
             {
                 UpdateHealthDisplay();
             }
@@ -79,5 +80,25 @@ public class EnemyHealth : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
+    }
+
+    // AÑADIDO: Gizmos para visualizar el rango de detección
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+
+        // Línea izquierda
+        Vector3 leftPoint = transform.position + Vector3.left * showHealthDistance;
+        Gizmos.DrawLine(transform.position, leftPoint);
+        Gizmos.DrawWireSphere(leftPoint, 0.3f);
+
+        // Línea derecha
+        Vector3 rightPoint = transform.position + Vector3.right * showHealthDistance;
+        Gizmos.DrawLine(transform.position, rightPoint);
+        Gizmos.DrawWireSphere(rightPoint, 0.3f);
+
+        // Línea completa mostrando el rango total
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(leftPoint, rightPoint);
     }
 }

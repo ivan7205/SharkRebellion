@@ -5,17 +5,26 @@ using UnityEngine;
 public class EnemyFollow : MonoBehaviour
 {
     public float moveSpeed = 3f;
-    public float stopDistance = 1f; // Distancia a la que se detiene
+    public float stopDistance = 1f;
 
     private Transform player;
+    private Animator animator;
+    public Canvas healthBarCanvas; // AÑADIDO: Referencia al Canvas
 
     void Start()
     {
-        // Encontrar al jugador por tag
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
         {
             player = playerObj.transform;
+        }
+
+        animator = GetComponent<Animator>();
+
+        // AÑADIDO: Buscar el Canvas automáticamente si no está asignado
+        if (healthBarCanvas == null)
+        {
+            healthBarCanvas = GetComponentInChildren<Canvas>();
         }
     }
 
@@ -23,31 +32,45 @@ public class EnemyFollow : MonoBehaviour
     {
         if (player != null)
         {
-            // Calcular distancia al jugador
             float distance = Vector3.Distance(transform.position, player.position);
 
-            // Si está lejos, moverse hacia el jugador
             if (distance > stopDistance)
             {
-                // Dirección hacia el jugador
                 Vector3 direction = (player.position - transform.position).normalized;
-
-                // Mover al enemigo
                 transform.position += direction * moveSpeed * Time.deltaTime;
 
-                // Mirar hacia el jugador (voltear sprite)
-                if (player.position.x < transform.position.x)
+                if (animator != null)
                 {
-                    // Jugador está a la izquierda - voltear sprite
-                    transform.localScale = new Vector3(0.47f, 0.47f, 0.47f);
+                    animator.SetBool("Idle", false);
                 }
-
-                else
+            }
+            else
+            {
+                if (animator != null)
                 {
-                    // Jugador está a la derecha - sprite normal
-                    transform.localScale = new Vector3(-0.47f, 0.47f, 0.47f);
+                    animator.SetBool("Idle", true);
+                }
+            }
+
+            // Voltear usando rotación en Y
+            if (player.position.x < transform.position.x)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+
+            // AÑADIDO: LateUpdate para forzar rotación del Canvas DESPUÉS de todo
+            void LateUpdate()
+            {
+                if (healthBarCanvas != null)
+                {
+                    healthBarCanvas.transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
             }
         }
     }
 }
+     

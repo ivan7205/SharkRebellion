@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public Sprite portrait;
+
     public int maxHealth = 3;
     public int currentHealth;
 

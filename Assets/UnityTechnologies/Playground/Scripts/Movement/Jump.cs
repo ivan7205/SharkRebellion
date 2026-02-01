@@ -45,7 +45,7 @@ public class Jump : Physics2DObject
 			rigidbody2D.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
 
             animator.SetTrigger("Jump");
-            animator.SetBool("isGrounded", true);
+            animator.SetBool("isGrounded", false);
 
             canJump = !checkGround;
 
@@ -60,7 +60,6 @@ public class Jump : Physics2DObject
 		{
 			canJump = true;
 
-           
 			animator.SetBool("isGrounded", true);
         }
 

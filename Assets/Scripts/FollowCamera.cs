@@ -96,4 +96,21 @@ public class CamaraIndependiente2D : MonoBehaviour
 
         transform.position = posicionSuavizada;
     }
+
+    /// <summary>
+    /// Cambia el objetivo que la cámara debe seguir
+    /// </summary>
+    /// <param name="nuevoObjetivo">Transform del nuevo objetivo a seguir</param>
+    public void CambiarObjetivo(Transform nuevoObjetivo)
+    {
+        if (nuevoObjetivo != null)
+        {
+            objetivo = nuevoObjetivo;
+            Debug.Log($"Cámara cambió su objetivo a: {nuevoObjetivo.name}");
+        }
+        else
+        {
+            Debug.LogWarning("Se intentó cambiar a un objetivo nulo");
+        }
+    }
 }

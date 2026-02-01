@@ -20,6 +20,9 @@ public class VialManager : MonoBehaviour
     public AudioSource audioSource; // Asignar en Inspector
     public AudioClip transformSound; // Sonido al transformarse
 
+    [Header("Camera")]
+    public CamaraIndependiente2D camaraScript; // Referencia al script de la cámara
+
     private void Start()
     {
         // Solo Jeff activo al inicio
@@ -32,6 +35,17 @@ public class VialManager : MonoBehaviour
             vialSlider.minValue = 0;
             vialSlider.maxValue = vialsNeeded;
             vialSlider.value = vialCount;
+        }
+
+        // Si no se asignó la cámara manualmente, buscarla automáticamente
+        if (camaraScript == null)
+        {
+            camaraScript = Camera.main.GetComponent<CamaraIndependiente2D>();
+
+            if (camaraScript == null)
+            {
+                Debug.LogWarning("No se encontró el script CamaraIndependiente2D en la Main Camera");
+            }
         }
     }
 
@@ -63,15 +77,26 @@ public class VialManager : MonoBehaviour
         }
 
         // Guardar la posición y rotación actual de Jeff
-
         Vector3 jeffPos = jeff.transform.position;
         Quaternion jeffRot = jeff.transform.rotation;
+
         jeff.SetActive(false);
         venom.SetActive(true);
 
-        // 3Poner a Venom exactamente en la posición y rotación de Jeff
+        // Poner a Venom exactamente en la posición y rotación de Jeff
         venom.transform.position = jeffPos;
         venom.transform.rotation = jeffRot;
+
+        // CAMBIAR EL OBJETIVO DE LA CÁMARA A VENOM
+        if (camaraScript != null)
+        {
+            camaraScript.CambiarObjetivo(venom.transform);
+            Debug.Log("Cámara ahora sigue a Venom");
+        }
+        else
+        {
+            Debug.LogWarning("No se pudo cambiar el objetivo de la cámara. Verifica que 'camaraScript' esté asignado.");
+        }
 
         Debug.Log("¡Jeff se ha transformado en Venom!");
     }

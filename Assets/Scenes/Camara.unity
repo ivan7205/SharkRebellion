@@ -5603,11 +5603,11 @@ MonoBehaviour:
   teclasIzquierda: 6100000014010000
   desplazamiento: {x: 0, y: 1, z: -10}
   velocidadSuavizado: 0.15
-  distanciaAnticipacion: 3
-  velocidadAnticipacion: 0.1
-  usarLimites: 0
-  minX: 0
-  maxX: 0
+  distanciaAnticipacion: 20
+  velocidadAnticipacion: 0.007
+  usarLimites: 1
+  minX: -15
+  maxX: 500
   minY: 0
   maxY: 0
 --- !u!1 &581201374
@@ -7144,7 +7144,7 @@ Transform:
   m_GameObject: {fileID: 1854412978}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -15.55, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
   m_LocalScale: {x: 3.9717188, y: 4.4606247, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

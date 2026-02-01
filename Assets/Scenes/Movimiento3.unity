@@ -1103,6 +1103,8 @@ MonoBehaviour:
   Jeff_Attack: {fileID: 8300000, guid: f297542a2e91cf242bf53ce7ebde9138, type: 3}
   Jeff_Shoot_Short: {fileID: 8300000, guid: 4335e47efe8442c4987ea7bb5e8f2a3a, type: 3}
   Jeff_Shoot_Long: {fileID: 8300000, guid: a59297dd501f2bd4db17ab53e323c6f9, type: 3}
+  Jeff_Jump: {fileID: 0}
+  Jeff_Die: {fileID: 0}
 --- !u!82 &972863516
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1199,6 +1201,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &972863517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972863503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b7c8097a37b9a43ac449a9ed69d122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCollider: {fileID: 1505195816}
+  damage: 1
+  animator: {fileID: 972863518}
+--- !u!95 &972863518 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6201345515854863496, guid: d7aaba85106446044b5126409c9c7f56,
+    type: 3}
+  m_PrefabInstance: {fileID: 1017468885}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &982885307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,7 +1395,13 @@ PrefabInstance:
       propertyPath: hearts.Array.data[5]
       value: 
       objectReference: {fileID: 962675962}
-    m_RemovedComponents: []
+    - target: {fileID: 8481958163853934194, guid: d7aaba85106446044b5126409c9c7f56,
+        type: 3}
+      propertyPath: jumpStrength
+      value: 90
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4714280309516968335, guid: d7aaba85106446044b5126409c9c7f56, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2538594385130411938, guid: d7aaba85106446044b5126409c9c7f56,
@@ -1380,6 +1409,10 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1505195814}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3743335648685494209, guid: d7aaba85106446044b5126409c9c7f56,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 972863517}
     - targetCorrespondingSourceObject: {fileID: 3743335648685494209, guid: d7aaba85106446044b5126409c9c7f56,
         type: 3}
       insertIndex: -1
@@ -1687,6 +1720,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4326864788705928152, guid: fd26886030bec9e4eaf1948a10f94dbc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510888202509671627, guid: fd26886030bec9e4eaf1948a10f94dbc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2083,6 +2126,8 @@ MonoBehaviour:
   Jeff_Attack: {fileID: 8300000, guid: f297542a2e91cf242bf53ce7ebde9138, type: 3}
   Jeff_Shoot_Short: {fileID: 8300000, guid: 03dd2435053c87b4f827e6cdad064e75, type: 3}
   Jeff_Shoot_Long: {fileID: 8300000, guid: 89a8eaf0fe7c9d841ab7b0fa4786b5cc, type: 3}
+  Jeff_Jump: {fileID: 8300000, guid: 996e05a3241291b428cd9f8afc163bf6, type: 3}
+  Jeff_Die: {fileID: 8300000, guid: 88c97b42819d1ab4d85de791a153794c, type: 3}
 --- !u!1 &1354215716
 GameObject:
   m_ObjectHideFlags: 0

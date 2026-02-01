@@ -21,7 +21,7 @@ public class VialCollected : MonoBehaviour
             }
 
             // Destruir el vial
-            Destroy(gameObject, 1f);
+            Destroy(gameObject, 0.1f);
         }
     }
 }

@@ -24,6 +24,8 @@ public class Jump : Physics2DObject
 	public Animator animator;
 	public Vector2 movement;
 
+	public AttackAudio attackAudio;
+
     void Start()
     {
         if (animator == null)
@@ -46,6 +48,8 @@ public class Jump : Physics2DObject
             animator.SetBool("isGrounded", true);
 
             canJump = !checkGround;
+
+			attackAudio.PlayJump();
 		}
 	}
 

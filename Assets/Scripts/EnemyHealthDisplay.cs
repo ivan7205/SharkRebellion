@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class EnemyHealthDisplay : MonoBehaviour
 {
-    public Sprite portrait;
     public int maxHealth = 4;
     public int currentHealth;
 

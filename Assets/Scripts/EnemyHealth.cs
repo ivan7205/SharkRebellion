@@ -6,7 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public Sprite portrait;
 
-    public int maxHealth = 3;
+    public int maxHealth = 4;
     public int currentHealth;
 
 

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,10 +12,10 @@ public class EnemyHealthDisplay : MonoBehaviour
     public Sprite fullHeart;
     public Image[] hearts;
 
-    public Image portraitImage;
-    public Sprite portrait;
+    public float maxDetectDistance = 15f;
 
     public EnemyHealth nearestEnemy;
+    public List<EnemyHealth> enemies = new List<EnemyHealth>();
 
     // Start is called before the first frame update
     void Start()
@@ -31,36 +31,33 @@ public class EnemyHealthDisplay : MonoBehaviour
 
     public void FindClosestEnemy()
     {
-        float closestEnemyDistance = Mathf.Infinity;
+
+        float closestDistance = Mathf.Infinity;
         nearestEnemy = null;
 
-        EnemyHealth[] potentialTargets = FindObjectsOfType<EnemyHealth>();
-
-        foreach (EnemyHealth currentEnemy in potentialTargets)
+        foreach (EnemyHealth enemy in enemies)
         {
-            float distanceAway = (currentEnemy.transform.position - transform.position).sqrMagnitude;
-            
-            if (distanceAway < closestEnemyDistance)
+            if (enemy == null) continue;
+            if (enemy.currentHealth <= 0) continue;
+
+            float distance = (enemy.transform.position - transform.position).sqrMagnitude;
+
+            if (distance < closestDistance)
             {
-                closestEnemyDistance = distanceAway;
-                nearestEnemy = currentEnemy;
+                closestDistance = distance;
+                nearestEnemy = enemy;
             }
         }
 
-        if (closestEnemyDistance <= 15*15)
-        {
+        if (nearestEnemy != null && closestDistance <= maxDetectDistance * maxDetectDistance)
             HealthBarOn();
-        }
-
         else
-        {
             HealthBarOff();
-        }
     }
+
 
     public void HealthBarOff()
     {
-        portraitImage.enabled = false;
         for (int i = 0; i < hearts.Length; i++)
         {
             hearts[i].enabled = false;
@@ -69,9 +66,6 @@ public class EnemyHealthDisplay : MonoBehaviour
 
     public void HealthBarOn()
     {
-        portraitImage.enabled = true;
-        portraitImage.sprite = nearestEnemy.portrait;
-
         maxHealth = nearestEnemy.maxHealth;
         health = nearestEnemy.currentHealth;
 

@@ -16,6 +16,10 @@ public class VialManager : MonoBehaviour
     [Header("UI")]
     public Slider vialSlider;  // arrastra aquí el Slider de la UI
 
+    [Header("Audio")]
+    public AudioSource audioSource; // Asignar en Inspector
+    public AudioClip transformSound; // Sonido al transformarse
+
     private void Start()
     {
         // Solo Jeff activo al inicio
@@ -52,6 +56,12 @@ public class VialManager : MonoBehaviour
 
     private void ActivateVenom()
     {
+        // Sonido de transformación
+        if (audioSource != null && transformSound != null)
+        {
+            audioSource.PlayOneShot(transformSound);
+        }
+
         // Guardar la posición y rotación actual de Jeff
 
         Vector3 jeffPos = jeff.transform.position;

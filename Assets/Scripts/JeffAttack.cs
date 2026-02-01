@@ -7,6 +7,8 @@ public class JeffAttack : MonoBehaviour
     public Collider2D attackCollider;
     public int damage = 1;
     public Animator animator;
+    public AttackAudio attackAudio;
+
 
     void Update()
     {
@@ -14,14 +16,20 @@ public class JeffAttack : MonoBehaviour
         {
             Attack();
         }
-  
+
         // Disparo corto
-        if (Input.GetKeyDown(KeyCode.K))
-            animator.SetTrigger("ShootShort");
+        if (Input.GetKeyDown(KeyCode.K)) 
+        { 
+        animator.SetTrigger("ShootShort");
+        attackAudio.PlayShootShort(); 
+        }
 
         // Disparo largo
         if (Input.GetKeyDown(KeyCode.L))
+        {
             animator.SetTrigger("ShootLong 0");
+            attackAudio.PlayShootLong();
+        }
     }
 
     void Attack()

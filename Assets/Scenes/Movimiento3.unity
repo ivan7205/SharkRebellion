@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 17577714}
   - component: {fileID: 17577713}
+  - component: {fileID: 17577715}
   m_Layer: 0
   m_Name: VialManager
   m_TagString: Untagged
@@ -156,6 +157,8 @@ MonoBehaviour:
   vialCount: 0
   vialsNeeded: 5
   vialSlider: {fileID: 1502010860}
+  audioSource: {fileID: 17577715}
+  transformSound: {fileID: 8300000, guid: 16e870a028ad98c4eb2c039438cd6b4e, type: 3}
 --- !u!4 &17577714
 Transform:
   m_ObjectHideFlags: 0
@@ -171,6 +174,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &17577715
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17577712}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &23067236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,8 +1202,8 @@ MonoBehaviour:
   Jeff_Attack: {fileID: 8300000, guid: f297542a2e91cf242bf53ce7ebde9138, type: 3}
   Jeff_Shoot_Short: {fileID: 8300000, guid: 4335e47efe8442c4987ea7bb5e8f2a3a, type: 3}
   Jeff_Shoot_Long: {fileID: 8300000, guid: a59297dd501f2bd4db17ab53e323c6f9, type: 3}
-  Jeff_Jump: {fileID: 0}
-  Jeff_Die: {fileID: 0}
+  Jeff_Venom_Jump: {fileID: 8300000, guid: 3b4f8284ddf45804295f4872da2a625e, type: 3}
+  Jeff_Die: {fileID: 8300000, guid: 88c97b42819d1ab4d85de791a153794c, type: 3}
 --- !u!82 &972863516
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1395,6 +1494,21 @@ PrefabInstance:
       propertyPath: hearts.Array.data[5]
       value: 
       objectReference: {fileID: 962675962}
+    - target: {fileID: 8129855887205443447, guid: d7aaba85106446044b5126409c9c7f56,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 972863516}
+    - target: {fileID: 8129855887205443447, guid: d7aaba85106446044b5126409c9c7f56,
+        type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 996e05a3241291b428cd9f8afc163bf6, type: 3}
+    - target: {fileID: 8481958163853934194, guid: d7aaba85106446044b5126409c9c7f56,
+        type: 3}
+      propertyPath: checkGround
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8481958163853934194, guid: d7aaba85106446044b5126409c9c7f56,
         type: 3}
       propertyPath: jumpStrength
@@ -1671,6 +1785,16 @@ PrefabInstance:
       propertyPath: hearts.Array.data[5]
       value: 
       objectReference: {fileID: 962675962}
+    - target: {fileID: 3090733741857637236, guid: fd26886030bec9e4eaf1948a10f94dbc,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1326578108}
+    - target: {fileID: 3090733741857637236, guid: fd26886030bec9e4eaf1948a10f94dbc,
+        type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 996e05a3241291b428cd9f8afc163bf6, type: 3}
     - target: {fileID: 3606427261303683718, guid: fd26886030bec9e4eaf1948a10f94dbc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2014,6 +2138,7 @@ MonoBehaviour:
   attackCollider: {fileID: 1354215718}
   damage: 1
   animator: {fileID: 1326578089}
+  attackAudio: {fileID: 0}
 --- !u!82 &1326578108
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2126,7 +2251,7 @@ MonoBehaviour:
   Jeff_Attack: {fileID: 8300000, guid: f297542a2e91cf242bf53ce7ebde9138, type: 3}
   Jeff_Shoot_Short: {fileID: 8300000, guid: 03dd2435053c87b4f827e6cdad064e75, type: 3}
   Jeff_Shoot_Long: {fileID: 8300000, guid: 89a8eaf0fe7c9d841ab7b0fa4786b5cc, type: 3}
-  Jeff_Jump: {fileID: 8300000, guid: 996e05a3241291b428cd9f8afc163bf6, type: 3}
+  Jeff_Venom_Jump: {fileID: 8300000, guid: 3b4f8284ddf45804295f4872da2a625e, type: 3}
   Jeff_Die: {fileID: 8300000, guid: 88c97b42819d1ab4d85de791a153794c, type: 3}
 --- !u!1 &1354215716
 GameObject:

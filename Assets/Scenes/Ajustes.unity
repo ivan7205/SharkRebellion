@@ -389,6 +389,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123462587}
   m_CullTransparentMesh: 1
+--- !u!1 &159765008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 159765010}
+  - component: {fileID: 159765009}
+  m_Layer: 0
+  m_Name: EsceneMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &159765009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159765008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fe85f7329404344822006df64db306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneMusic: {fileID: 8300000, guid: 38627804ba4f6a941b1200482c66f94f, type: 3}
+  loop: 1
+--- !u!4 &159765010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159765008}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8738749, y: 8.56784, z: 309.663}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &181703161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -400,17 +446,17 @@ PrefabInstance:
     - target: {fileID: 2217323223736063257, guid: 86d3428acf3f64c48aa1b779c90e88ad,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2217323223736063257, guid: 86d3428acf3f64c48aa1b779c90e88ad,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2217323223736063257, guid: 86d3428acf3f64c48aa1b779c90e88ad,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4853786354673506411, guid: 86d3428acf3f64c48aa1b779c90e88ad,
         type: 3}
@@ -520,12 +566,12 @@ PrefabInstance:
     - target: {fileID: 8595134454797826323, guid: 86d3428acf3f64c48aa1b779c90e88ad,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8595134454797826323, guid: 86d3428acf3f64c48aa1b779c90e88ad,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2330,17 +2376,17 @@ PrefabInstance:
     - target: {fileID: 2217323223736063257, guid: 9d6e71addbfce874d8a3bb77bf05f776,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2217323223736063257, guid: 9d6e71addbfce874d8a3bb77bf05f776,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2217323223736063257, guid: 9d6e71addbfce874d8a3bb77bf05f776,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4853786354673506411, guid: 9d6e71addbfce874d8a3bb77bf05f776,
         type: 3}
@@ -2450,12 +2496,12 @@ PrefabInstance:
     - target: {fileID: 8595134454797826323, guid: 9d6e71addbfce874d8a3bb77bf05f776,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8595134454797826323, guid: 9d6e71addbfce874d8a3bb77bf05f776,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2775,7 +2821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1048849989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2880,7 +2926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1057847630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4994,3 +5040,4 @@ SceneRoots:
   - {fileID: 1495837537}
   - {fileID: 2068061629}
   - {fileID: 1048849992}
+  - {fileID: 159765010}

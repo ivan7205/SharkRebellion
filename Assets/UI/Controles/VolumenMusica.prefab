@@ -249,6 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4853786354673506411}
   - component: {fileID: 6054765329265704832}
+  - component: {fileID: 4025920017492682316}
   m_Layer: 5
   m_Name: VolumenMusica
   m_TagString: Untagged
@@ -342,6 +343,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4025920017492682316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323478415718995126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a02ff4967d51348b5e7f0e894dce9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 6054765329265704832}
 --- !u!1 &8256254407816488218
 GameObject:
   m_ObjectHideFlags: 0

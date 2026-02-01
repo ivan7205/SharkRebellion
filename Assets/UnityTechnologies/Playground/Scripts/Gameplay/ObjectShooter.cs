@@ -46,17 +46,19 @@ public class ObjectShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKey(keyToPress)
            && Time.time >= timeOfLastSpawn + creationRate)
         {
             Vector2 actualBulletDirection = (relativeToRotation) ? (Vector2)(Quaternion.Euler(0, 0, transform.eulerAngles.z) * shootDirection) : shootDirection;
 
+            // Instanciamos la bala
             GameObject newObject = Instantiate<GameObject>(prefabToSpawn);
             newObject.transform.position = this.transform.position;
             newObject.transform.eulerAngles = new Vector3(0f, 0f, Utils.Angle(actualBulletDirection));
             newObject.tag = "Bullet";
 
-            // push the created objects, but only if they have a Rigidbody2D
+            // push the created objects (the  bullet), but only if they have a Rigidbody2D
             Rigidbody2D rigidbody2D = newObject.GetComponent<Rigidbody2D>();
             if (rigidbody2D != null)
             {
@@ -71,7 +73,7 @@ public class ObjectShooter : MonoBehaviour
             }
             b.playerId = playerNumber;
 
-
+            Destroy(newObject, 1.5f);// Destruye la bala automáticamente tras x segundos.
 
             timeOfLastSpawn = Time.time;
         }

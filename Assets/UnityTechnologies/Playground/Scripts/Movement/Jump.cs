@@ -24,6 +24,8 @@ public class Jump : Physics2DObject
 	public Animator animator;
 	public Vector2 movement;
 
+	public AttackAudio attackAudio;
+
     void Start()
     {
         if (animator == null)
@@ -43,9 +45,11 @@ public class Jump : Physics2DObject
 			rigidbody2D.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
 
             animator.SetTrigger("Jump");
-            animator.SetBool("isGrounded", true);
+            animator.SetBool("isGrounded", false);
 
             canJump = !checkGround;
+
+			attackAudio.PlayJump();
 		}
 	}
 
@@ -56,7 +60,6 @@ public class Jump : Physics2DObject
 		{
 			canJump = true;
 
-           
 			animator.SetBool("isGrounded", true);
         }
 

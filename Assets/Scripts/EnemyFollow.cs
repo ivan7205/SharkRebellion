@@ -5,11 +5,12 @@ using UnityEngine;
 public class EnemyFollow : MonoBehaviour
 {
     public float moveSpeed = 3f;
-    public float stopDistance = 1f;
+    public float stopDistance = 1.5f;
+    public float attackCooldown = 1.5f;
 
     private Transform player;
     private Animator animator;
-    public Canvas healthBarCanvas; // AÑADIDO: Referencia al Canvas
+    private float lastAttackTime = -999f;
 
     void Start()
     {
@@ -20,12 +21,6 @@ public class EnemyFollow : MonoBehaviour
         }
 
         animator = GetComponent<Animator>();
-
-        // AÑADIDO: Buscar el Canvas automáticamente si no está asignado
-        if (healthBarCanvas == null)
-        {
-            healthBarCanvas = GetComponentInChildren<Canvas>();
-        }
     }
 
     void Update()
@@ -49,10 +44,15 @@ public class EnemyFollow : MonoBehaviour
                 if (animator != null)
                 {
                     animator.SetBool("Idle", true);
+
+                    if (Time.time >= lastAttackTime + attackCooldown)
+                    {
+                        animator.SetTrigger("Attack");
+                        lastAttackTime = Time.time;
+                    }
                 }
             }
 
-            // Voltear usando rotación en Y
             if (player.position.x < transform.position.x)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -61,16 +61,32 @@ public class EnemyFollow : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
+        }
+    }
 
-            // AÑADIDO: LateUpdate para forzar rotación del Canvas DESPUÉS de todo
-            void LateUpdate()
+    public void DealDamage()
+    {
+        // SIMPLIFICADO: Solo verificar distancia, no isAttacking
+        if (player != null)
+        {
+            float distance = Vector3.Distance(transform.position, player.position);
+
+            // Verificar que está en rango de ataque
+            if (distance <= stopDistance * 1.5f) // Un poco más de margen
             {
-                if (healthBarCanvas != null)
+                JeffHealth jeffHealth = player.GetComponent<JeffHealth>();
+                if (jeffHealth != null)
                 {
-                    healthBarCanvas.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    jeffHealth.TakeDamage(1);
+                    return;
+                }
+
+                VenomHealth venomHealth = player.GetComponent<VenomHealth>();
+                if (venomHealth != null)
+                {
+                    venomHealth.TakeDamage(1);
                 }
             }
         }
     }
 }
-     

@@ -14,7 +14,12 @@ public class EnemyHealth : MonoBehaviour
     public Sprite fullHeart;
     public float showHealthDistance = 15f;
 
+    public GameObject healthBarCanvas; // Referencia al Canvas
+    public float dieAnimationDuration = 1f; // Duración de la animación de muerte
+
     private Transform player;
+    private Animator animator;
+    private bool isDying = false; // Para evitar múltiples llamadas
 
     void Start()
     {
@@ -23,6 +28,9 @@ public class EnemyHealth : MonoBehaviour
         // Encontrar al jugador
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
+        // Obtener el Animator
+        animator = GetComponent<Animator>();
+
         // Ocultar corazones al inicio
         HideHealth();
     }
@@ -30,7 +38,7 @@ public class EnemyHealth : MonoBehaviour
     void Update()
     {
         // Verificar distancia al jugador
-        if (player != null)
+        if (player != null && !isDying)
         {
             // Calcular distancia en X (horizontal)
             float distanceX = Mathf.Abs(player.position.x - transform.position.x);
@@ -48,12 +56,44 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (isDying) return; // No recibir más daño si ya está muriendo
+
         currentHealth -= amount;
+
+        // Activar animación de daño (Damage)
+        if (animator != null && currentHealth > 0)
+        {
+            animator.SetTrigger("Damage");
+        }
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    // Método para manejar la muerte
+    void Die()
+    {
+        isDying = true;
+
+        // Activar animación de muerte
+        if (animator != null)
+        {
+            animator.SetTrigger("Die");
+        }
+
+        // Ocultar la barra de vida inmediatamente
+        HideHealth();
+
+        // Destruir el Canvas inmediatamente
+        if (healthBarCanvas != null)
+        {
+            Destroy(healthBarCanvas);
+        }
+
+        // Destruir el enemigo después de que termine la animación
+        Destroy(gameObject, dieAnimationDuration);
     }
 
     // Ocultar corazones
@@ -82,7 +122,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    // AÑADIDO: Gizmos para visualizar el rango de detección
+    // Gizmos para visualizar el rango de detección
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

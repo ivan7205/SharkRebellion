@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,6 +43,11 @@ public class VenomHealth : MonoBehaviour
             animator.SetTrigger("Die");
             playerJump.enabled = false;
         }
+    }
+
+    internal void TakeDamage(float amount)
+    {
+        throw new NotImplementedException();
     }
 }
 

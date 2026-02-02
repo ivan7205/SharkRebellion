@@ -5916,6 +5916,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232501483}
   m_CullTransparentMesh: 1
+--- !u!1 &1235542807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3143332648709336257, guid: 189fbe098d8add7408a708814e2d566f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4464660604294582334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1235542808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235542807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bbdad00dfcdb8840a033a7596f25143, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1235542809}
+  deathTriggerName: PitchgeonDeath
+--- !u!95 &1235542809 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 678192593687032621, guid: 189fbe098d8add7408a708814e2d566f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4464660604294582334}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1282333377
 GameObject:
   m_ObjectHideFlags: 0
@@ -10381,7 +10407,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1576076057}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3143332648709336257, guid: 189fbe098d8add7408a708814e2d566f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1235542808}
   m_SourcePrefab: {fileID: 100100000, guid: 189fbe098d8add7408a708814e2d566f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

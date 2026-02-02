@@ -1594,7 +1594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18fe85f7329404344822006df64db306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneMusic: {fileID: 8300000, guid: a2bb9acd569570641824478e410780f2, type: 3}
+  sceneMusic: {fileID: 8300000, guid: 763fa934302911d47959fc944d8d5dcd, type: 3}
   loop: 1
 --- !u!4 &438769831
 Transform:

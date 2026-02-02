@@ -19,6 +19,7 @@ public class EnemyFollow : MonoBehaviour
     private bool isDead = false;
     private bool isTakingDamage = false;
     private bool isAttacking = false; // ← NUEVA VARIABLE
+    public int attackDamage = 1;
 
     void Start()
     {
@@ -195,14 +196,14 @@ public class EnemyFollow : MonoBehaviour
                 JeffHealth jeffHealth = player.GetComponent<JeffHealth>();
                 if (jeffHealth != null)
                 {
-                    jeffHealth.TakeDamage(1);
+                    jeffHealth.TakeDamage(attackDamage);
                     return;
                 }
 
                 VenomHealth venomHealth = player.GetComponent<VenomHealth>();
                 if (venomHealth != null)
                 {
-                    venomHealth.TakeDamage(1);
+                    venomHealth.TakeDamage(attackDamage);
                 }
             }
         }

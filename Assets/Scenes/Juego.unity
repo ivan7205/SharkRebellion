@@ -2415,7 +2415,7 @@ PrefabInstance:
     - target: {fileID: 5461115491108359555, guid: 194d44e531bbc7f4a84e44c0350dc45c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 410
+      value: 405
       objectReference: {fileID: 0}
     - target: {fileID: 5461115491108359555, guid: 194d44e531bbc7f4a84e44c0350dc45c,
         type: 3}
@@ -6852,7 +6852,7 @@ PrefabInstance:
     - target: {fileID: 4393933140688569264, guid: 61e76190bb4353445b050b6dd4ccfa50,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 810
+      value: 595.9
       objectReference: {fileID: 0}
     - target: {fileID: 4393933140688569264, guid: 61e76190bb4353445b050b6dd4ccfa50,
         type: 3}
@@ -9378,7 +9378,7 @@ PrefabInstance:
     - target: {fileID: 5461115491108359555, guid: 194d44e531bbc7f4a84e44c0350dc45c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 588
+      value: 436
       objectReference: {fileID: 0}
     - target: {fileID: 5461115491108359555, guid: 194d44e531bbc7f4a84e44c0350dc45c,
         type: 3}
@@ -10354,7 +10354,7 @@ PrefabInstance:
     - target: {fileID: 5461115491108359555, guid: 194d44e531bbc7f4a84e44c0350dc45c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 459.2
+      value: 343
       objectReference: {fileID: 0}
     - target: {fileID: 5461115491108359555, guid: 194d44e531bbc7f4a84e44c0350dc45c,
         type: 3}
@@ -11807,7 +11807,7 @@ PrefabInstance:
     - target: {fileID: 4275963023589274786, guid: 189fbe098d8add7408a708814e2d566f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 900
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4275963023589274786, guid: 189fbe098d8add7408a708814e2d566f,
         type: 3}
@@ -11873,6 +11873,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 454
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381942599338788532, guid: 189fbe098d8add7408a708814e2d566f,
+        type: 3}
+      propertyPath: attackDamage
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8381942599338788532, guid: 189fbe098d8add7408a708814e2d566f,
         type: 3}

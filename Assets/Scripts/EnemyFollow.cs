@@ -1,16 +1,24 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
 {
+    [Header("Movement Settings")]
     public float moveSpeed = 3f;
     public float stopDistance = 1.5f;
+
+    [Header("Combat Settings")]
     public float attackCooldown = 1.5f;
+    public int maxHealth = 3;
 
     private Transform player;
     private Animator animator;
     private float lastAttackTime = -999f;
+    private int currentHealth;
+    private bool isDead = false;
+    private bool isTakingDamage = false;
+    private bool isAttacking = false; // ← NUEVA VARIABLE
 
     void Start()
     {
@@ -21,38 +29,46 @@ public class EnemyFollow : MonoBehaviour
         }
 
         animator = GetComponent<Animator>();
+        currentHealth = maxHealth;
     }
 
     void Update()
     {
+        // No hacer nada si está muerto, recibiendo daño o atacando
+        if (isDead || isTakingDamage || isAttacking)
+            return;
+
         if (player != null)
         {
-            float distance = Vector3.Distance(transform.position, player.position);
+            // Calcular distancia solo en el eje X (horizontal)
+            float distanceX = Mathf.Abs(player.position.x - transform.position.x);
 
-            if (distance > stopDistance)
+            if (distanceX > stopDistance)
             {
-                Vector3 direction = (player.position - transform.position).normalized;
-                transform.position += direction * moveSpeed * Time.deltaTime;
+                // CAMINANDO - se mueve hacia el jugador
+                float direction = Mathf.Sign(player.position.x - transform.position.x);
+                transform.position += new Vector3(direction * moveSpeed * Time.deltaTime, 0, 0);
 
                 if (animator != null)
                 {
-                    animator.SetBool("Idle", false);
+                    animator.SetBool("Idle", false); // Caminar
                 }
             }
             else
             {
+                // QUIETO - está en rango de ataque
                 if (animator != null)
                 {
-                    animator.SetBool("Idle", true);
+                    animator.SetBool("Idle", true); // Idle
 
                     if (Time.time >= lastAttackTime + attackCooldown)
                     {
-                        animator.SetTrigger("Attack");
-                        lastAttackTime = Time.time;
+                        StartCoroutine(AttackRoutine());
                     }
                 }
             }
 
+            // Voltear según posición del jugador
             if (player.position.x < transform.position.x)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -64,17 +80,117 @@ public class EnemyFollow : MonoBehaviour
         }
     }
 
+    private IEnumerator AttackRoutine()
+    {
+        isAttacking = true;
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Attack");
+        }
+
+        lastAttackTime = Time.time;
+
+        // Esperar a que termine la animación de ataque
+        // Ajusta según la duración de tu animación
+        yield return new WaitForSeconds(1f);
+
+        isAttacking = false;
+
+        // CRÍTICO: Recalcular el estado después del ataque
+        if (player != null && !isDead)
+        {
+            float distanceX = Mathf.Abs(player.position.x - transform.position.x);
+
+            if (distanceX > stopDistance)
+            {
+                // Si el jugador se alejó durante el ataque, volver a caminar
+                if (animator != null)
+                {
+                    animator.SetBool("Idle", false);
+                }
+            }
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (isDead || isTakingDamage)
+            return;
+
+        currentHealth -= damage;
+        Debug.Log("Enemigo recibió " + damage + " de daño. Vida restante: " + currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            StartCoroutine(DamageAnimation());
+        }
+    }
+
+    private IEnumerator DamageAnimation()
+    {
+        isTakingDamage = true;
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Damage");
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        isTakingDamage = false;
+
+        // CRÍTICO: Recalcular el estado después del daño
+        if (player != null && !isDead)
+        {
+            float distanceX = Mathf.Abs(player.position.x - transform.position.x);
+
+            if (distanceX > stopDistance)
+            {
+                // Si está lejos, asegurarse de volver a caminar
+                if (animator != null)
+                {
+                    animator.SetBool("Idle", false);
+                }
+            }
+            else
+            {
+                // Si está cerca, volver a idle
+                if (animator != null)
+                {
+                    animator.SetBool("Idle", true);
+                }
+            }
+        }
+    }
+
+    private void Die()
+    {
+        if (isDead) return;
+
+        isDead = true;
+        Debug.Log("Enemigo murió");
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Die");
+        }
+
+        this.enabled = false;
+        Destroy(gameObject, 2f);
+    }
+
     public void DealDamage()
     {
-        Debug.Log("DealDamage llamado en el jefe");
-
-        // SIMPLIFICADO: Solo verificar distancia, no isAttacking
-        if (player != null)
+        if (player != null && !isDead)
         {
-            float distance = Vector3.Distance(transform.position, player.position);
+            float distanceX = Mathf.Abs(player.position.x - transform.position.x);
 
-            // Verificar que est� en rango de ataque
-            if (distance <= stopDistance * 1.5f) // Un poco m�s de margen
+            if (distanceX <= stopDistance * 1.5f)
             {
                 JeffHealth jeffHealth = player.GetComponent<JeffHealth>();
                 if (jeffHealth != null)

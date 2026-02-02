@@ -837,7 +837,7 @@ MonoBehaviour:
   - {fileID: 363125557932236963}
   emptyHeart: {fileID: 21300002, guid: fed24bd82cefc0c4a8ef64dab6231b53, type: 3}
   fullHeart: {fileID: 21300000, guid: fed24bd82cefc0c4a8ef64dab6231b53, type: 3}
-  showHealthDistance: 25
+  showHealthDistance: 50
   healthBarCanvas: {fileID: 6086492528391421039}
   dieAnimationDuration: 3
 --- !u!50 &8738199375077269130

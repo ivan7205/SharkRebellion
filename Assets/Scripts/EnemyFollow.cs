@@ -66,6 +66,8 @@ public class EnemyFollow : MonoBehaviour
 
     public void DealDamage()
     {
+        Debug.Log("DealDamage llamado en el jefe");
+
         // SIMPLIFICADO: Solo verificar distancia, no isAttacking
         if (player != null)
         {

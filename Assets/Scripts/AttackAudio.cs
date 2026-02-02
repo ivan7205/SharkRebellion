@@ -23,7 +23,7 @@ public class AttackAudio : MonoBehaviour
     
     public void PlayAttackJ()
     {
-        audioSource.PlayOneShot(Jeff_Attack);
+        PlaySound(Jeff_Attack);
     }
 
     /*public void PlayAttackK()

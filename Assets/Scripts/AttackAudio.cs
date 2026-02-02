@@ -12,6 +12,11 @@ public class AttackAudio : MonoBehaviour
     public AudioClip Jeff_Venom_Jump;
     public AudioClip Jeff_Die;
 
+    [Header("Volume Control")]
+    [Range(0f, 1f)]
+    public float volume = 1f; // valor por defecto
+
+
     public void PlayJump()
     {
         PlaySound(Jeff_Venom_Jump);
@@ -51,5 +56,13 @@ public class AttackAudio : MonoBehaviour
     {
         if (audioSource != null && clip != null)
             audioSource.PlayOneShot(clip);
+    }
+   
+    // Método que conectará el slider
+    public void SetVolume(float value)
+    {
+        volume = value;
+        if (audioSource != null)
+            audioSource.volume = volume;
     }
 }

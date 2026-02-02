@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JeffHealth : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class JeffHealth : MonoBehaviour
     public AudioSource audioSource; // Asignar en Inspector
     public AudioClip damageSound;   // Asignar en Inspector
 
+    private bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +30,7 @@ public class JeffHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        if (health <= 0) return; // Evitamos que se siga llamando si ya murió
+        if (isDead) return; // Evitamos que se siga llamando si ya murió
 
         health -= amount;
 
@@ -42,10 +44,22 @@ public class JeffHealth : MonoBehaviour
 
         if (health <= 0)
         {
-            playerSr.enabled = false;
+            Die();
+        }
+        void Die()
+        {
+            isDead = true;
             playerMovement.enabled = false;
-            animator.SetTrigger("Die");
             playerJump.enabled = false;
+            animator.SetTrigger("Die"); // esto dispara la animación
         }
     }
+
+    
+    public void OnDeathAnimationEnd()
+    {
+        Debug.Log("Animación de muerte terminada");
+        SceneManager.LoadScene("Loooser");
+    }
+
 }

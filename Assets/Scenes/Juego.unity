@@ -710,6 +710,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6054765329265704832, guid: 86d3428acf3f64c48aa1b779c90e88ad,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1326578145}
+    - target: {fileID: 6054765329265704832, guid: 86d3428acf3f64c48aa1b779c90e88ad,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054765329265704832, guid: 86d3428acf3f64c48aa1b779c90e88ad,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AttackAudio, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6323478415718995126, guid: 86d3428acf3f64c48aa1b779c90e88ad,
         type: 3}
       propertyPath: m_Name
@@ -6052,6 +6067,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1100173142}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1326578145 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 367167353258097472, guid: fd26886030bec9e4eaf1948a10f94dbc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1100173142}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258492310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb00e4a402fdb81418bac265fc630ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1401727790
 GameObject:
   m_ObjectHideFlags: 0

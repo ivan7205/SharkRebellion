@@ -426,7 +426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2609474312062089505
 Transform:
   m_ObjectHideFlags: 0
@@ -566,9 +566,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e3682846326da42af40997c19122ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portrait: {fileID: 21300000, guid: 3db891c148023d24fba85fb6136e904a, type: 3}
   maxHealth: 4
   currentHealth: 0
+  hearts:
+  - {fileID: 4097543517305479560}
+  - {fileID: 3678303600923106459}
+  - {fileID: 6052083635190189767}
+  - {fileID: 5585415888537602320}
+  emptyHeart: {fileID: 21300002, guid: fed24bd82cefc0c4a8ef64dab6231b53, type: 3}
+  fullHeart: {fileID: 21300000, guid: fed24bd82cefc0c4a8ef64dab6231b53, type: 3}
+  showHealthDistance: 15
+  healthBarCanvas: {fileID: 0}
+  dieAnimationDuration: 1
 --- !u!50 &4781212229122999471
 Rigidbody2D:
   serializedVersion: 4

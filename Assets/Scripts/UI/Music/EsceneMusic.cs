@@ -14,4 +14,10 @@ public class EsceneMusic : MonoBehaviour
             AudioManager.Instance.PlayMusic(sceneMusic, loop);
         }
     }
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 }
+

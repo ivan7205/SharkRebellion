@@ -402,6 +402,50 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &569016335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 569016337}
+  - component: {fileID: 569016336}
+  m_Layer: 0
+  m_Name: Minimizar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &569016336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569016335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14286f9d8c0fb34d895fda7a0816fb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &569016337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569016335}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1421.3827, y: 756.1303, z: -13.399998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &581201374
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,6 +745,8 @@ MonoBehaviour:
   playerMovement: {fileID: 0}
   animator: {fileID: 0}
   playerJump: {fileID: 0}
+  audioSource: {fileID: 0}
+  damageSound: {fileID: 0}
 --- !u!114 &924034223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,6 +790,7 @@ MonoBehaviour:
   orientToDirection: 1
   lookAxis: 1
   animator: {fileID: 0}
+  GetKeyDown: 0
 --- !u!114 &924034225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,9 +807,11 @@ MonoBehaviour:
   key: 119
   jumpStrength: 150
   groundTag: Ground
+  enemyTag: Enemy
   checkGround: 1
   animator: {fileID: 0}
   movement: {x: 0, y: 0}
+  attackAudio: {fileID: 0}
 --- !u!50 &924034226
 Rigidbody2D:
   serializedVersion: 4
@@ -1853,3 +1902,4 @@ SceneRoots:
   - {fileID: 1708405052}
   - {fileID: 1030224832}
   - {fileID: 2069450665}
+  - {fileID: 569016337}

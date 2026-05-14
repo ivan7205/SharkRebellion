@@ -30,36 +30,40 @@ public class JeffHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        if (isDead) return; // Evitamos que se siga llamando si ya murió
-
+        if (isDead) return;
         health -= amount;
 
-        // Reproducir sonido al recibir daño
         if (audioSource != null && damageSound != null)
             audioSource.PlayOneShot(damageSound);
 
-        // Activar animación de recibir daño
         if (animator != null)
             animator.SetTrigger("Damage");
 
         if (health <= 0)
-        {
             Die();
-        }
-        void Die()
-        {
-            isDead = true;
-            playerMovement.enabled = false;
-            playerJump.enabled = false;
-            animator.SetTrigger("Die"); // esto dispara la animación
-        }
     }
 
-    
+    // Die() fuera de TakeDamage
+    private void Die()
+    {
+        isDead = true;
+        playerMovement.enabled = false;
+        playerJump.enabled = false;
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.gravityScale = 0f;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+
+        animator.SetTrigger("Die");
+    }
+
     public void OnDeathAnimationEnd()
     {
         Debug.Log("Animación de muerte terminada");
         SceneManager.LoadScene("Loooser");
     }
-
 }

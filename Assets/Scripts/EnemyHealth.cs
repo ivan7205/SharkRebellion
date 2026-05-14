@@ -60,9 +60,12 @@ public class EnemyHealth : MonoBehaviour
 
         currentHealth -= amount;
 
+        Debug.Log("TakeDamage llamado, health: " + currentHealth + ", animator: " + (animator != null));
+
         // Activar animación de daño (Damage)
         if (animator != null && currentHealth > 0)
         {
+            Debug.Log("Lanzando trigger Damage");
             animator.SetTrigger("Damage");
         }
 

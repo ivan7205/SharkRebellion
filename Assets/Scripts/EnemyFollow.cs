@@ -41,10 +41,11 @@ public class EnemyFollow : MonoBehaviour
 
         if (player != null)
         {
-            // Calcular distancia solo en el eje X (horizontal)
-            float distanceX = Mathf.Abs(player.position.x - transform.position.x);
+            float distance = Vector2.Distance(
+            new Vector2(transform.position.x, transform.position.y),
+            new Vector2(player.position.x, player.position.y));
 
-            if (distanceX > stopDistance)
+            if (distance > stopDistance)
             {
                 // CAMINANDO - se mueve hacia el jugador
                 float direction = Mathf.Sign(player.position.x - transform.position.x);
@@ -189,9 +190,9 @@ public class EnemyFollow : MonoBehaviour
     {
         if (player != null && !isDead)
         {
-            float distanceX = Mathf.Abs(player.position.x - transform.position.x);
+            float distance = Vector2.Distance(transform.position, player.position);
 
-            if (distanceX <= stopDistance * 1.5f)
+            if (distance <= stopDistance * 1.5f)
             {
                 JeffHealth jeffHealth = player.GetComponent<JeffHealth>();
                 if (jeffHealth != null)

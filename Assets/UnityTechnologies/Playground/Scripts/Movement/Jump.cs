@@ -4,63 +4,66 @@ using System.Collections;
 [AddComponentMenu("Playground/Movement/Jump")]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Jump : Physics2DObject
-{	
-	[Header("Jump setup")]
-	// the key used to activate the push
-	public KeyCode key = KeyCode.Space;
+{
 
-	// strength of the push
-	public float jumpStrength = 10f;
+    public string bossTag = "Boss";
 
-	[Header("Ground setup")]
-	//if the object collides with another object tagged as this, it can jump again
-	public string groundTag = "Ground";
+    [Header("Jump setup")]
+    // the key used to activate the push
+    public KeyCode key = KeyCode.Space;
+
+    // strength of the push
+    public float jumpStrength = 10f;
+
+    [Header("Ground setup")]
+    //if the object collides with another object tagged as this, it can jump again
+    public string groundTag = "Ground";
     public string enemyTag = "Enemy";
 
     //this determines if the script has to check for when the player touches the ground to enable him to jump again
     //if not, the player can jump even while in the air
     public bool checkGround = true;
 
-	private bool canJump = true;
-	public Animator animator;
-	public Vector2 movement;
+    private bool canJump = true;
+    public Animator animator;
+    public Vector2 movement;
 
-	public AttackAudio attackAudio;
+    public AttackAudio attackAudio;
 
     void Start()
     {
         if (animator == null)
             animator = GetComponent<Animator>();
 
-		animator.ResetTrigger("Jump");
+        animator.ResetTrigger("Jump");
     }
 
     // Read the input from the player
     void Update()
-	{
+    {
 
-		if(canJump
-			&& Input.GetKeyDown(key))
-		{
-			// Apply an instantaneous upwards force
-			rigidbody2D.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
+        if (canJump
+            && Input.GetKeyDown(key))
+        {
+            // Apply an instantaneous upwards force
+            rigidbody2D.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
 
             animator.SetTrigger("Jump");
             animator.SetBool("isGrounded", false);
 
             canJump = !checkGround;
 
-			attackAudio.PlayJump();
-		}
-	}
+            attackAudio.PlayJump();
+        }
+    }
 
-    private void OnCollisionEnter2D(Collision2D collisionData)
+    private void OnCollisionStay2D(Collision2D collisionData)
     {
         if (checkGround)
         {
-            // CAMBIADO: Verificar si toca el suelo O un enemigo
             if (collisionData.gameObject.CompareTag(groundTag) ||
-               collisionData.gameObject.CompareTag(enemyTag))
+                collisionData.gameObject.CompareTag(enemyTag) ||
+                collisionData.gameObject.CompareTag(bossTag))
             {
                 canJump = true;
                 animator.SetBool("isGrounded", true);

@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class BossHitBox : MonoBehaviour
 {
     private EnemyHealth enemyHealth;
@@ -11,13 +10,13 @@ public class BossHitBox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
-            return; // evitar que se llame a sí mismo
+        Debug.Log("BossHitBox tocado por: " + other.gameObject.name + " tag: " + other.gameObject.tag);
 
-        EnemyHealth health = other.GetComponent<EnemyHealth>();
-        if (health == null && enemyHealth != null)
+        // Solo procesar balas, no otras cosas
+        if (other.CompareTag("Bullet"))
         {
-            enemyHealth.TakeDamage(1);
+            if (enemyHealth != null)
+                enemyHealth.TakeDamage(other.GetComponent<BulletDamage>()?.damage ?? 1);
         }
     }
 }

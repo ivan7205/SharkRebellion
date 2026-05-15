@@ -17,21 +17,29 @@ public class BulletDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Bala tocó: " + collision.gameObject.name + " tag: " + collision.gameObject.tag + " hasHit: " + hasHit);
+
         if (hasHit) return;
 
         if (collision.CompareTag("Player") ||
-            collision.CompareTag("PlayerAttack") ||
-            collision.CompareTag("Untagged"))
+        collision.CompareTag("Untagged") ||
+        collision.CompareTag("Boss") || 
+        collision.CompareTag("Bullet"))
             return;
 
         if (collision.CompareTag("Enemy"))
         {
-            hasHit = true;
-            EnemyHealth enemy = collision.GetComponent<EnemyHealth>()
-                             ?? collision.GetComponentInParent<EnemyHealth>();
-            if (enemy != null)
-                enemy.TakeDamage(damage);
+            EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
 
+            if (enemy == null)
+            {
+                // Es el HitBox hijo del jefe, BossHitBox gestiona el daño
+                return;
+            }
+
+            // Es un enemigo normal con EnemyHealth directamente en él
+            hasHit = true;
+            enemy.TakeDamage(damage);
             Destroy(gameObject);
         }
     }

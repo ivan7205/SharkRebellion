@@ -35,6 +35,7 @@ public class EnemyFollow : MonoBehaviour
 
     void Update()
     {
+
         // No hacer nada si está muerto, recibiendo daño o atacando
         if (isDead || isTakingDamage || isAttacking)
             return;
@@ -209,4 +210,10 @@ public class EnemyFollow : MonoBehaviour
             }
         }
     }
+
+    public void SetTakingDamage(bool value)
+    {
+        isTakingDamage = value;
+    }
+
 }

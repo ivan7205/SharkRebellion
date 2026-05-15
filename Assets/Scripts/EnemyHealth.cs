@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,11 +15,12 @@ public class EnemyHealth : MonoBehaviour
     public float showHealthDistance = 15f;
 
     public GameObject healthBarCanvas; // Referencia al Canvas
-    public float dieAnimationDuration = 5f; // Duración de la animación de muerte
+    public float dieAnimationDuration = 5f; // DuraciÃ³n de la animaciÃ³n de muerte
 
     private Transform player;
     private Animator animator;
-    private bool isDying = false; // Para evitar múltiples llamadas
+    private bool isDying = false; // Para evitar mÃºltiples llamadas
+    private bool isTakingDamage = false;
 
     void Start()
     {
@@ -56,7 +57,9 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        if (isDying) return; // No recibir más daño si ya está muriendo
+        Debug.Log("TakeDamage llamado, isTakingDamage: " + isTakingDamage + " isDying: " + isDying);
+
+        if (isDying || isTakingDamage) return; // No recibir mÃ¡s daÃ±o si ya estÃ¡ muriendo
 
         Debug.Log("TakeDamage llamado con: " + amount + " objeto: " + gameObject.name);
 
@@ -64,11 +67,13 @@ public class EnemyHealth : MonoBehaviour
 
         Debug.Log("TakeDamage llamado, health: " + currentHealth + ", animator: " + (animator != null));
 
-        // Activar animación de daño (Damage)
+        // Activar animaciÃ³n de daÃ±o (Damage)
         if (animator != null && currentHealth > 0)
         {
             Debug.Log("Lanzando trigger Damage");
+            animator.ResetTrigger("Damage");
             animator.SetTrigger("Damage");
+            StartCoroutine(DamageRoutine());
         }
 
         if (currentHealth <= 0)
@@ -77,27 +82,24 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    // Método para manejar la muerte
+    // MÃ©todo para manejar la muerte
     void Die()
     {
         isDying = true;
 
-        // Activar animación de muerte
-        if (animator != null)
-        {
-            animator.SetTrigger("Die");
-        }
+        // Avisar a EnemyFollow para que gestione la muerte
+        EnemyFollow enemyFollow = GetComponent<EnemyFollow>();
+        if (enemyFollow != null)
+            enemyFollow.TakeDamage(999); // forzar muerte en EnemyFollow
 
-        // Ocultar la barra de vida inmediatamente
+        if (animator != null)
+            animator.SetTrigger("Die");
+
         HideHealth();
 
-        // Destruir el Canvas inmediatamente
         if (healthBarCanvas != null)
-        {
             Destroy(healthBarCanvas);
-        }
 
-        // Destruir el enemigo después de que termine la animación
         Destroy(gameObject, dieAnimationDuration);
     }
 
@@ -127,23 +129,39 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    // Gizmos para visualizar el rango de detección
+    // Gizmos para visualizar el rango de detecciÃ³n
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
 
-        // Línea izquierda
+        // LÃ­nea izquierda
         Vector3 leftPoint = transform.position + Vector3.left * showHealthDistance;
         Gizmos.DrawLine(transform.position, leftPoint);
         Gizmos.DrawWireSphere(leftPoint, 0.3f);
 
-        // Línea derecha
+        // LÃ­nea derecha
         Vector3 rightPoint = transform.position + Vector3.right * showHealthDistance;
         Gizmos.DrawLine(transform.position, rightPoint);
         Gizmos.DrawWireSphere(rightPoint, 0.3f);
 
-        // Línea completa mostrando el rango total
+        // LÃ­nea completa mostrando el rango total
         Gizmos.color = Color.green;
         Gizmos.DrawLine(leftPoint, rightPoint);
+    }
+
+    private IEnumerator DamageRoutine()
+    {
+        isTakingDamage = true;
+
+        EnemyFollow enemyFollow = GetComponent<EnemyFollow>();
+        if (enemyFollow != null)
+            enemyFollow.SetTakingDamage(true);
+
+        yield return new WaitForSeconds(0.5f);
+
+        isTakingDamage = false;
+
+        if (enemyFollow != null)
+            enemyFollow.SetTakingDamage(false);
     }
 }

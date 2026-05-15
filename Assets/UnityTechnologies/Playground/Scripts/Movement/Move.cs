@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 [AddComponentMenu("Playground/Movement/Move")]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -91,13 +91,15 @@ public class Move : Physics2DObject
         }
 
         Vector3 move = new Vector3(moveHorizontal * speed, moveVertical * speed);
-        transform.position += move * Time.deltaTime;
     }
 
     // FixedUpdate is called every frame when the physics are calculated
     void FixedUpdate()
     {
-        // Apply the force to the Rigidbody2d
-        rigidbody2D.AddForce(movement * speed * 10f);
+        // Solo sobreescribimos la velocidad X, Y la maneja la física sola
+        rigidbody2D.velocity = new Vector2(
+            movement.x * speed,
+            rigidbody2D.velocity.y // ← Y intacta, respeta salto y gravedad
+        );
     }
 }

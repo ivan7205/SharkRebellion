@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 7942860246383357318}
   - component: {fileID: 4500016059805249860}
   - component: {fileID: 1375279870948706936}
-  - component: {fileID: 3050505072363221676}
   - component: {fileID: -1994703623763179509}
+  - component: {fileID: -7963020462036936770}
   m_Layer: 0
   m_Name: chorrazo
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,7 +122,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0.07225324, y: 0.07225275}
   m_Size: {x: 10.581461, y: 5.271094}
   m_Direction: 1
---- !u!50 &3050505072363221676
+--- !u!114 &-1994703623763179509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8420193241429715296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75dd63acc8b6e52468ac7a1bfc38571a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
+  moveDirection: {x: 0, y: 0}
+  moveSpeed: 0
+--- !u!50 &-7963020462036936770
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -130,7 +145,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8420193241429715296}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -147,18 +162,5 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 2
---- !u!114 &-1994703623763179509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8420193241429715296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75dd63acc8b6e52468ac7a1bfc38571a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 3
+  m_CollisionDetection: 1
+  m_Constraints: 0

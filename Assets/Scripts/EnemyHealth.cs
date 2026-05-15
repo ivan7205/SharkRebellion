@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int maxHealth = 4;
+    public int maxHealth = 14;
     public int currentHealth;
 
     // Referencias a la UI de este enemigo
@@ -15,7 +15,7 @@ public class EnemyHealth : MonoBehaviour
     public float showHealthDistance = 15f;
 
     public GameObject healthBarCanvas; // Referencia al Canvas
-    public float dieAnimationDuration = 1f; // Duración de la animación de muerte
+    public float dieAnimationDuration = 5f; // Duración de la animación de muerte
 
     private Transform player;
     private Animator animator;
@@ -58,11 +58,16 @@ public class EnemyHealth : MonoBehaviour
     {
         if (isDying) return; // No recibir más daño si ya está muriendo
 
+        Debug.Log("TakeDamage llamado con: " + amount + " objeto: " + gameObject.name);
+
         currentHealth -= amount;
+
+        Debug.Log("TakeDamage llamado, health: " + currentHealth + ", animator: " + (animator != null));
 
         // Activar animación de daño (Damage)
         if (animator != null && currentHealth > 0)
         {
+            Debug.Log("Lanzando trigger Damage");
             animator.SetTrigger("Damage");
         }
 

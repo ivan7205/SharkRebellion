@@ -242,6 +242,7 @@ MonoBehaviour:
   venom: {fileID: 972863503}
   vialCount: 0
   vialsNeeded: 5
+  venomDuration: 10
   vialSlider: {fileID: 1502010860}
   audioSource: {fileID: 17577715}
   transformSound: {fileID: 8300000, guid: 16e870a028ad98c4eb2c039438cd6b4e, type: 3}
@@ -5129,6 +5130,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 974757533358671134, guid: d7aaba85106446044b5126409c9c7f56,
+        type: 3}
+      propertyPath: shootDirection.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2538594385130411938, guid: d7aaba85106446044b5126409c9c7f56,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5183,6 +5189,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Jeff Venom
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695048198211250206, guid: d7aaba85106446044b5126409c9c7f56,
+        type: 3}
+      propertyPath: shootDirection.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6955287318786902523, guid: d7aaba85106446044b5126409c9c7f56,
         type: 3}
@@ -9158,7 +9169,7 @@ PrefabInstance:
     - target: {fileID: 3364778757393971828, guid: 194d44e531bbc7f4a84e44c0350dc45c,
         type: 3}
       propertyPath: filterTag
-      value: PlayerBullet
+      value: Bullet
       objectReference: {fileID: 0}
     - target: {fileID: 5461115491108359555, guid: 194d44e531bbc7f4a84e44c0350dc45c,
         type: 3}

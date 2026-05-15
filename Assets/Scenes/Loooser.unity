@@ -670,7 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18fe85f7329404344822006df64db306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneMusic: {fileID: 8300000, guid: fdad538a33b775c4391842c1a4b258b9, type: 3}
+  sceneMusic: {fileID: 8300000, guid: be2ce81a69f22084b83534c5831986ff, type: 3}
   loop: 1
 --- !u!4 &2011624422
 Transform:

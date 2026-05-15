@@ -10,26 +10,30 @@ public class VialManager : MonoBehaviour
     public GameObject venom;
 
     [Header("Vials")]
-    public int vialCount = 0;       // contador global
-    public int vialsNeeded = 5;     // viales necesarios para transformarse
+    public int vialCount = 0;
+    public int vialsNeeded = 5;
+
+    [Header("Venom Duration")]
+    public float venomDuration = 10f; // segundos que dura la forma Venom
 
     [Header("UI")]
-    public Slider vialSlider;  // arrastra aquí el Slider de la UI
+    public Slider vialSlider;
 
     [Header("Audio")]
-    public AudioSource audioSource; // Asignar en Inspector
-    public AudioClip transformSound; // Sonido al transformarse
+    public AudioSource audioSource;
+    public AudioClip transformSound;
 
     [Header("Camera")]
-    public CamaraIndependiente2D camaraScript; // Referencia al script de la cámara
+    public CamaraIndependiente2D camaraScript;
+
+    private bool venomReady = false;  // poder disponible pero no activado
+    private bool venomActive = false; // venom ya está activo
 
     private void Start()
     {
-        // Solo Jeff activo al inicio
         jeff.SetActive(true);
         venom.SetActive(false);
 
-        // Configuramos el slider
         if (vialSlider != null)
         {
             vialSlider.minValue = 0;
@@ -37,67 +41,98 @@ public class VialManager : MonoBehaviour
             vialSlider.value = vialCount;
         }
 
-        // Si no se asignó la cámara manualmente, buscarla automáticamente
         if (camaraScript == null)
-        {
             camaraScript = Camera.main.GetComponent<CamaraIndependiente2D>();
+    }
 
-            if (camaraScript == null)
-            {
-                Debug.LogWarning("No se encontró el script CamaraIndependiente2D en la Main Camera");
-            }
+    private void Update()
+    {
+        // Solo activar si el poder está listo y se presiona Space
+        if (venomReady && !venomActive && Input.GetKeyDown(KeyCode.Space))
+        {
+            ActivateVenom();
         }
     }
 
-    // Este método lo llamarán los viales al ser recogidos
     public void CollectVial()
     {
         vialCount++;
         Debug.Log("Viales recogidos: " + vialCount);
 
         if (vialSlider != null)
-        {
             vialSlider.value = vialCount;
-            Debug.Log("Slider actualizado a: " + vialSlider.value);
-        }
 
-        //Activa el Venom si alcanzamos el limite
         if (vialCount >= vialsNeeded)
         {
-            ActivateVenom();
+            venomReady = true;
+            Debug.Log("¡Poder Venom listo! Presiona Space para activar.");
         }
     }
 
     private void ActivateVenom()
     {
-        // Sonido de transformación
-        if (audioSource != null && transformSound != null)
-        {
-            audioSource.PlayOneShot(transformSound);
-        }
+        venomReady = false;
+        venomActive = true;
 
-        // Guardar la posición y rotación actual de Jeff
+        if (audioSource != null && transformSound != null)
+            audioSource.PlayOneShot(transformSound);
+
         Vector3 jeffPos = jeff.transform.position;
         Quaternion jeffRot = jeff.transform.rotation;
 
         jeff.SetActive(false);
         venom.SetActive(true);
 
-        // Poner a Venom exactamente en la posición y rotación de Jeff
         venom.transform.position = jeffPos;
         venom.transform.rotation = jeffRot;
 
-        // CAMBIAR EL OBJETIVO DE LA CÁMARA A VENOM
         if (camaraScript != null)
-        {
             camaraScript.CambiarObjetivo(venom.transform);
-            Debug.Log("Cámara ahora sigue a Venom");
-        }
-        else
-        {
-            Debug.LogWarning("No se pudo cambiar el objetivo de la cámara. Verifica que 'camaraScript' esté asignado.");
-        }
 
         Debug.Log("¡Jeff se ha transformado en Venom!");
+
+        StartCoroutine(VenomTimer());
+    }
+
+    private IEnumerator VenomTimer()
+    {
+        float elapsed = 0f;
+
+        while (elapsed < venomDuration)
+        {
+            elapsed += Time.deltaTime;
+
+            // La barra drena progresivamente de lleno a 0
+            if (vialSlider != null)
+                vialSlider.value = Mathf.Lerp(vialsNeeded, 0, elapsed / venomDuration);
+
+            yield return null;
+        }
+
+        DeactivateVenom();
+    }
+
+    private void DeactivateVenom()
+    {
+        venomActive = false;
+        vialCount = 0;
+
+        // Resetear barra
+        if (vialSlider != null)
+            vialSlider.value = 0;
+
+        Vector3 venomPos = venom.transform.position;
+        Quaternion venomRot = venom.transform.rotation;
+
+        venom.SetActive(false);
+        jeff.SetActive(true);
+
+        jeff.transform.position = venomPos;
+        jeff.transform.rotation = venomRot;
+
+        if (camaraScript != null)
+            camaraScript.CambiarObjetivo(jeff.transform);
+
+        Debug.Log("Venom se ha agotado, Jeff ha vuelto.");
     }
 }

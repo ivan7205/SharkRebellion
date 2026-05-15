@@ -16,5 +16,19 @@ public class AttackHitBox : MonoBehaviour
                 enemy.TakeDamage(damage);
             }
         }
+
+        // Detectar cajas y simular que una bala las golpea
+        if (other.CompareTag("Box"))
+        {
+            // Crear un objeto temporal con tag Bullet para activar el ConditionArea
+            GameObject fakeHit = new GameObject("FakeHit");
+            fakeHit.tag = "Bullet";
+            fakeHit.transform.position = other.transform.position;
+            BoxCollider2D col = fakeHit.AddComponent<BoxCollider2D>();
+            col.isTrigger = true;
+            Rigidbody2D rb = fakeHit.AddComponent<Rigidbody2D>();
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            Destroy(fakeHit, 0.1f);
+        }
     }
 }
